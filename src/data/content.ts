@@ -277,5 +277,5 @@ export const SOCIAL_LINKS: SocialLink[] = [
 
 export const CONTACT = {
   phone: "+57 300 000 0000",
-  email: "hola@tuempresa.co",
+  email: "hola@stellaris.com.co",
 } as const;
