@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Read(//c/Users/frede/Documents/Stellaris/**)",
+      "Bash(cp -r \"c:/Users/frede/Documents/Stellaris/LandingPage-temp/\"* \"c:/Users/frede/Documents/Stellaris/LandingPage/\")",
+      "Bash(cp \"c:/Users/frede/Documents/Stellaris/LandingPage-temp/.gitignore\" \"c:/Users/frede/Documents/Stellaris/LandingPage/\")",
+      "Bash(rm -rf \"c:/Users/frede/Documents/Stellaris/LandingPage-temp\")",
+      "Bash(npm install:*)",
+      "Bash(rm -f App.tsx App.css index.css)",
+      "Bash(rm -rf assets)",
+      "Bash(mkdir -p components/ui components/layout components/sections data)",
+      "Bash(rm -f src/App.css public/vite.svg src/assets/react.svg)",
+      "Bash(rmdir src/assets)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(grep -iE \"\\\\.\\(png|jpg|jpeg|svg|webp|ico|gif\\)$\")",
+      "WebFetch(domain:www.schick-toikka.com)",
+      "WebFetch(domain:fonts.google.com)",
+      "WebSearch",
+      "WebFetch(domain:www.typewolf.com)",
+      "Bash(npm uninstall:*)",
+      "Bash(node -e \"const lr = require\\(''''lucide-react''''\\); const names = Object.keys\\(lr\\).filter\\(k => typeof lr[k] === ''''object'''' && lr[k].displayName\\); console.log\\(names.filter\\(n => n.toLowerCase\\(\\).includes\\(''''instagram''''\\) || n.toLowerCase\\(\\).includes\\(''''shirt''''\\) || n.toLowerCase\\(\\).includes\\(''''flame''''\\) || n.toLowerCase\\(\\).includes\\(''''webhook''''\\) || n.toLowerCase\\(\\).includes\\(''''pie''''\\) || n.toLowerCase\\(\\).includes\\(''''layers''''\\) || n.toLowerCase\\(\\).includes\\(''''globe''''\\) || n.toLowerCase\\(\\).includes\\(''''send''''\\) || n.toLowerCase\\(\\).includes\\(''''at-sign''''\\)\\).join\\(''''\\\\n''''\\)\\)\")",
+      "Bash(node -e \"const lr = require\\(''lucide-react''\\); const names = Object.keys\\(lr\\).filter\\(k => !k.includes\\(''Icon''\\) && !k.startsWith\\(''Lucide''\\) && typeof lr[k] === ''object''\\); console.log\\(names.filter\\(n => /^\\(Send|AtSign|Webhook|Shirt\\)$/.test\\(n\\)\\).join\\(''\\\\n''\\)\\)\")",
+      "Bash(node -e \"const lr = require\\(''lucide-react''\\); const names = Object.keys\\(lr\\).filter\\(k => !k.includes\\(''Icon''\\) && !k.startsWith\\(''Lucide''\\) && typeof lr[k] === ''object''\\); console.log\\(names.filter\\(n => /share|social|megaphone|hash|sparkle|rss|users|landmark/i.test\\(n\\)\\).join\\(''\\\\n''\\)\\)\")",
+      "WebFetch(domain:react-icons.github.io)",
+      "Read(//c/Users/frede/Downloads/FlWzo9GHljV-1774762501925/**)",
+      "Read(//c/Users/frede/Downloads/**)",
+      "Bash(grep -l \"gsap\\\\|ScrollTrigger\" c:/Users/frede/Downloads/FlWzo9GHljV-1774762501925/components/*.tsx)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\frede\\Documents\\Stellaris"
+    ]
+  }
+}
