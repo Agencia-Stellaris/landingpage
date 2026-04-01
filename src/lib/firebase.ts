@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics, isSupported } from "firebase/analytics";
+import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA7-4Q9l6QjI6oz9smhRlGnxSsa805ejhM",
@@ -14,9 +15,15 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
+// App Check — protects Firestore from unauthorized access
+initializeAppCheck(app, {
+  provider: new ReCaptchaV3Provider("6LdbAKEsAAAAAWraLir0GyyyhEvM7dpchNa_FKV"),
+  isTokenAutoRefreshEnabled: true,
+});
+
 export const db = getFirestore(app);
 
-// Analytics — only initialize in the browser (not during SSR/build)
+// Analytics
 export const analytics = isSupported().then((supported) =>
   supported ? getAnalytics(app) : null,
 );
