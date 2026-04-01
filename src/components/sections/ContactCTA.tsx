@@ -1,8 +1,10 @@
-import { type FormEvent, useCallback, useRef } from "react";
+import { type FormEvent, useCallback, useRef, useState } from "react";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../../lib/firebase";
 import { Container } from "../ui/Container";
 import { SectionHeader } from "../ui/SectionHeader";
 import { CONTACT } from "../../data/content";
-import { Phone, Mail, Send } from "lucide-react";
+import { Phone, Mail, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { useReveal } from "../../hooks/useScrollReveal";
 
 const inputStyles =
@@ -10,22 +12,37 @@ const inputStyles =
 
 const contentReveal = { y: 50 };
 
+type FormStatus = "idle" | "sending" | "success" | "error";
+
 export function ContactCTA() {
   const formRef = useRef<HTMLFormElement>(null);
   const contentRef = useReveal<HTMLDivElement>(contentReveal);
+  const [status, setStatus] = useState<FormStatus>("idle");
 
-  const handleSubmit = useCallback((e: FormEvent) => {
+  const handleSubmit = useCallback(async (e: FormEvent) => {
     e.preventDefault();
     const form = formRef.current;
-    if (!form) return;
+    if (!form || status === "sending") return;
+
+    setStatus("sending");
+
     const data = new FormData(form);
-    console.log("Contact request:", {
-      name: data.get("name"),
-      email: data.get("email"),
-      message: data.get("message"),
-    });
-    form.reset();
-  }, []);
+
+    try {
+      await addDoc(collection(db, "contactRequests"), {
+        name: data.get("name"),
+        email: data.get("email"),
+        message: data.get("message"),
+        createdAt: serverTimestamp(),
+      });
+      setStatus("success");
+      form.reset();
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
+  }, [status]);
 
   return (
     <Container
@@ -120,11 +137,34 @@ export function ContactCTA() {
           {/* Submit */}
           <button
             type="submit"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl gradient-bg px-7 py-3.5 font-heading text-sm font-bold text-white transition-all hover:-translate-y-px hover:opacity-90 sm:w-auto"
+            disabled={status === "sending"}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl gradient-bg px-7 py-3.5 font-heading text-sm font-bold text-white transition-all hover:-translate-y-px hover:opacity-90 disabled:pointer-events-none disabled:opacity-60 sm:w-auto"
           >
-            <Send size={16} aria-hidden="true" />
-            Enviar mensaje
+            {status === "sending" ? (
+              <>
+                <Loader2 size={16} className="animate-spin" aria-hidden="true" />
+                Enviando...
+              </>
+            ) : (
+              <>
+                <Send size={16} aria-hidden="true" />
+                Enviar mensaje
+              </>
+            )}
           </button>
+
+          {/* Status messages */}
+          {status === "success" && (
+            <p className="flex items-center gap-2 text-sm font-medium text-accent-green">
+              <CheckCircle2 size={16} />
+              Mensaje enviado. Nos pondremos en contacto pronto.
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-sm font-medium text-accent-pink">
+              Hubo un error. Por favor, int&eacute;ntalo de nuevo.
+            </p>
+          )}
         </form>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-6">

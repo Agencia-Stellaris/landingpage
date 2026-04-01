@@ -1,3 +1,4 @@
+import "./lib/firebase"; // Initialize Firebase + Analytics
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
 import { SmoothScroll } from "./components/layout/SmoothScroll";
