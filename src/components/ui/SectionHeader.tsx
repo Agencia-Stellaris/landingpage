@@ -28,12 +28,12 @@ export function SectionHeader({
         {label}
       </p>
       {titleContent ? (
-        <h2 className="mb-4 font-heading text-section font-extrabold leading-[1.1] tracking-[-1px]">
+        <h2 className={clsx("mb-4 font-heading text-section font-extrabold leading-[1.1] tracking-[-1px]", centered && "mx-auto max-w-2xl")}>
           {titleContent}
         </h2>
       ) : (
         <h2
-          className="mb-4 font-heading text-section font-extrabold leading-[1.1] tracking-[-1px]"
+          className={clsx("mb-4 font-heading text-section font-extrabold leading-[1.1] tracking-[-1px]", centered && "mx-auto max-w-2xl")}
           dangerouslySetInnerHTML={{ __html: title ?? "" }}
         />
       )}

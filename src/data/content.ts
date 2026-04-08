@@ -164,25 +164,25 @@ export const PROCESS_STEPS: ProcessStep[] = [
     number: "01",
     title: "Diagn\u00f3stico",
     description:
-      "Analizamos tu negocio, tu competencia y tu audiencia para entender d\u00f3nde est\u00e1s y d\u00f3nde quieres llegar.",
+      "Analizamos tu negocio, tu audiencia, tu competencia y tu presencia digital actual. Sin diagn\u00f3stico real, no hay estrategia real.",
   },
   {
     number: "02",
     title: "Estrategia",
     description:
-      "Dise\u00f1amos un plan digital personalizado con metas claras, canales seleccionados y un calendario de acci\u00f3n.",
+      "Dise\u00f1amos un plan de acci\u00f3n personalizado con objetivos medibles, canales priorizados y KPIs definidos desde el inicio.",
   },
   {
     number: "03",
     title: "Ejecuci\u00f3n",
     description:
-      "Implementamos, creamos y gestionamos con precisi\u00f3n. T\u00fa enf\u00f3cate en tu negocio; nosotros en tu presencia digital.",
+      "Activamos las campa\u00f1as y estrategias con supervisi\u00f3n t\u00e9cnica completa para asegurar un arranque sin fricciones.",
   },
   {
     number: "04",
     title: "Optimizaci\u00f3n",
     description:
-      "Medimos, analizamos y mejoramos continuamente. Cada dato nos dice c\u00f3mo hacer el siguiente mes mejor que el anterior.",
+      "Analizamos los datos en tiempo real, identificamos oportunidades de mejora y optimizamos continuamente para maximizar el ROI.",
   },
 ];
 

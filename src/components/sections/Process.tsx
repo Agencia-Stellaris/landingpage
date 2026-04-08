@@ -1,5 +1,6 @@
 import { Container } from "../ui/Container";
 import { SectionHeader } from "../ui/SectionHeader";
+import { HighlightText } from "../ui/HighlightText";
 import { PROCESS_STEPS } from "../../data/content";
 import { useScrollReveal, useReveal } from "../../hooks/useScrollReveal";
 
@@ -14,9 +15,9 @@ export function Process() {
     <Container id="proceso">
       <div ref={headerRef}>
         <SectionHeader
-          label="Proceso"
-          title="C&oacute;mo trabajamos"
-          subtitle="Un proceso claro y estructurado para que siempre sepas en qu&eacute; etapa estamos."
+          label="&iquest;C&oacute;mo trabajamos?"
+          titleContent={<>Un proceso probado para llevar tu marca de donde est&aacute; a donde <HighlightText>merece estar.</HighlightText></>}
+          subtitle="En Stellaris no improvisamos. Cada proyecto sigue una metodolog&iacute;a rigurosa, dise&ntilde;ada para maximizar resultados y minimizar riesgos. Del diagn&oacute;stico a la ejecuci&oacute;n, cada paso tiene un prop&oacute;sito claro."
           centered
         />
       </div>
