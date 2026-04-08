@@ -36,8 +36,8 @@ export function Hero() {
         </div>
 
         <h1 id="hero-heading" className="mb-5 font-heading text-hero font-bold leading-[1.08] tracking-[-2px]">
-          <span className="block">&iquest;Nuestro objetivo?</span>
-          <span className="gradient-text">Hacer crecer tu marca digital</span>
+          <span className="block">Hacemos que tu marca</span>
+          <span className="gradient-text">domine el mundo digital</span>
         </h1>
 
         <p className="mx-auto mb-10 max-w-[550px] text-lg leading-relaxed text-text-muted">
