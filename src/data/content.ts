@@ -91,7 +91,7 @@ export const SERVICES: Service[] = [
     iconColor: "from-[#25d366] to-[#128c3e]",
     title: "WhatsApp Marketing",
     description:
-      "Estrategia y automatizaci\u00f3n de WhatsApp Business. Flujos de atenci\u00f3n, campa\u00f1as de mensajer\u00eda masiva y chatbots inteligentes.",
+      "WhatsApp tiene m\u00e1s de 2.000 millones de usuarios activos y tasas de apertura que superan el 90%. En Stellaris convertimos ese potencial en conversaciones reales que generan ventas, fidelizan clientes y construyen relaciones duraderas con tu audiencia.",
     href: "#",
   },
   {
@@ -99,15 +99,15 @@ export const SERVICES: Service[] = [
     iconColor: "from-[#f77737] via-[#e1306c] to-[#833ab4]",
     title: "Redes Sociales",
     description:
-      "Gesti\u00f3n estrat\u00e9gica de Instagram, Facebook, LinkedIn y TikTok. Contenido de alto impacto, comunidad activa y crecimiento org\u00e1nico medible.",
+      "La gesti\u00f3n profesional de redes sociales va mucho m\u00e1s all\u00e1 de publicar contenido. En Stellaris construimos comunidades reales, narrativas de marca que conectan y estrategias de contenido que generan conversaciones, prospectos y ventas.",
     href: "#",
   },
   {
     icon: Globe,
     iconColor: "from-[#a855f7] to-[#6d28d9]",
-    title: "Dise\u00f1o & Desarrollo Web",
+    title: "Dise\u00f1o y desarrollo web",
     description:
-      "Sitios web r\u00e1pidos, modernos y optimizados para SEO. Desde landing pages hasta plataformas completas con enfoque en conversi\u00f3n.",
+      "En Stellaris dise\u00f1amos y desarrollamos sitios web que no solo se ven bien, sino que trabajan estrat\u00e9gicamente por tu negocio. Cada elemento visual, cada estructura de navegaci\u00f3n y cada l\u00ednea de c\u00f3digo est\u00e1 pensada para atraer, convencer y convertir.",
     href: "#",
   },
   {
@@ -115,7 +115,7 @@ export const SERVICES: Service[] = [
     iconColor: "from-[#06b6d4] to-[#0e7490]",
     title: "Email Marketing",
     description:
-      "Secuencias de email que convierten. Dise\u00f1o de newsletters, automatizaciones, segmentaci\u00f3n avanzada y an\u00e1lisis de campa\u00f1as.",
+      "Con un retorno muy alto, el email marketing sigue siendo uno de los canales m\u00e1s rentables del ecosistema digital. En Stellaris dise\u00f1amos estrategias que nutren leads, reactivan clientes y generan ingresos predecibles para tu organizaci\u00f3n.",
     href: "#",
   },
 ];

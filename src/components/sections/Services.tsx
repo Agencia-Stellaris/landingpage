@@ -68,7 +68,7 @@ export function Services() {
                 href={service.href}
                 className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-pink transition-all group-hover:gap-2.5"
               >
-                Descubre m&aacute;s aqu&iacute;
+                Conoce m&aacute;s aqu&iacute;
                 <ArrowRight
                   size={14}
                   className="transition-transform group-hover:translate-x-1"
