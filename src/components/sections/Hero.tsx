@@ -51,7 +51,7 @@ export function Hero() {
             Agenda tu diagn&oacute;stico gratuito
           </Button>
           <Button variant="secondary" href="#contacto">
-            &iexcl;Cont&aacute;ctanos!
+            Conoce nuestros servicios
           </Button>
         </div>
       </div>
