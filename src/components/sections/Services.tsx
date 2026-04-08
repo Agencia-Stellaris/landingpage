@@ -18,7 +18,6 @@ export function Services() {
         <SectionHeader
           label="Servicios"
           titleContent={<>Todo lo que necesita<br/>tu <HighlightText>negocio digital</HighlightText></>}
-          subtitle="Un equipo altamente capacitado para llevarte al siguiente nivel en los servicios que ofrecemos."
           centered
         />
       </div>
