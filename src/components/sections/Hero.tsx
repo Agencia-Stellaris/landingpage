@@ -48,7 +48,7 @@ export function Hero() {
 
         <div className="flex flex-wrap items-center justify-center gap-3.5">
           <Button href="#servicios">
-            Ver nuestros servicios
+            Agenda tu diagn&oacute;stico gratuito
           </Button>
           <Button variant="secondary" href="#contacto">
             &iexcl;Cont&aacute;ctanos!
