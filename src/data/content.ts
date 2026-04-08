@@ -27,6 +27,7 @@ export interface Service {
 export interface WhyUsItem {
   number: string;
   title: string;
+  subtitle: string;
   description: string;
 }
 
@@ -123,39 +124,38 @@ export const SERVICES: Service[] = [
 export const WHY_US_ITEMS: WhyUsItem[] = [
   {
     number: "01",
-    title: "Estrategia personalizada",
+    title: "Diagn\u00f3stico estrat\u00e9gico real",
+    subtitle: "No asumimos. Analizamos.",
     description:
-      "Nada es gen\u00e9rico. Cada cliente recibe un plan dise\u00f1ado desde cero para su industria, audiencia y objetivos.",
+      "Antes de cualquier acci\u00f3n, hacemos un diagn\u00f3stico profundo de tu negocio, tu competencia y tu audiencia. Construimos estrategias sobre datos, no suposiciones.",
   },
   {
     number: "02",
-    title: "Equipo especializado",
+    title: "Especialistas de alto nivel",
+    subtitle: "Los mejores en cada disciplina.",
     description:
-      "Cada servicio tiene un experto detr\u00e1s. No somos generalistas: tenemos especialistas por cada \u00e1rea digital.",
+      "Nuestro equipo est\u00e1 compuesto por especialistas con certificaciones de Google, Meta, HubSpot y otras plataformas l\u00edderes. No somos comunes: somos expertos en lo que hacemos.",
   },
   {
     number: "03",
-    title: "Reportes transparentes",
+    title: "Resultados medibles",
+    subtitle: "Si no se mide, no existe.",
     description:
-      "Reportes quincenales con m\u00e9tricas reales. Sabes exactamente qu\u00e9 se hace, qu\u00e9 funciona y hacia d\u00f3nde vamos.",
+      "Cada campa\u00f1a, cada pieza de contenido, cada acci\u00f3n que ejecutamos tiene m\u00e9tricas claras. Entregamos reportes transparentes y tomamos decisiones basadas en datos reales.",
   },
   {
     number: "04",
-    title: "Comunicaci\u00f3n directa",
+    title: "Estrategias 360\u00b0",
+    subtitle: "Todas las piezas conectadas.",
     description:
-      "Sin intermediarios. Tienes acceso directo a tu equipo v\u00eda WhatsApp, con respuesta en menos de 2 horas h\u00e1biles.",
+      "No vendemos servicios independientes. Dise\u00f1amos ecosistemas digitales donde cada canal refuerza al otro: redes sociales, web, email y WhatsApp trabajando como un sistema unificado.",
   },
   {
     number: "05",
-    title: "Enfoque en ROI",
+    title: "Aliados, no proveedores",
+    subtitle: "Tu crecimiento es nuestra prioridad.",
     description:
-      "Todo lo que hacemos apunta a un objetivo: que tu inversi\u00f3n en marketing se traduzca en ventas reales.",
-  },
-  {
-    number: "06",
-    title: "Adaptaci\u00f3n constante",
-    description:
-      "El digital cambia cada semana. Actualizamos las estrategias continuamente para aprovechar cada nueva oportunidad.",
+      "En Stellaris no gestionamos cuentas: construimos relaciones. Entendemos tu modelo de negocio, tus objetivos comerciales y trabajamos como una extensi\u00f3n estrat\u00e9gica de tu equipo.",
   },
 ];
 

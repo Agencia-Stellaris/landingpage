@@ -1,40 +1,93 @@
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "../ui/Container";
-import { SectionHeader } from "../ui/SectionHeader";
 import { HighlightText } from "../ui/HighlightText";
 import { WHY_US_ITEMS } from "../../data/content";
-import { useScrollReveal, useReveal } from "../../hooks/useScrollReveal";
+import { useReveal } from "../../hooks/useScrollReveal";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const headerReveal = { y: 40 };
-const gridReveal = { y: 50, stagger: 0.1 };
 
 export function WhyUs() {
   const headerRef = useReveal<HTMLDivElement>(headerReveal);
-  const gridRef = useScrollReveal<HTMLDivElement>(gridReveal);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = cardsRef.current;
+    if (!el) return;
+
+    const cards = el.querySelectorAll<HTMLElement>(".whyus-card");
+    if (!cards.length) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        cards,
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 88%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+    }, el);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <Container id="por-que-elegirnos" alternate>
-      <div ref={headerRef}>
-        <SectionHeader
-          label="&iquest;Por qu&eacute; elegirnos?"
-          titleContent={<><HighlightText>Resultados</HighlightText>, no solo<br/>promesas</>}
-          subtitle="Lo que nos diferencia no es lo que decimos, sino lo que demostramos con cada proyecto."
-        />
+      {/* Top row: Title left + intro text right */}
+      <div ref={headerRef} className="mb-12 grid items-center gap-8 lg:grid-cols-2">
+        <div>
+          <p className="mb-3.5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[2.5px] text-accent-pink before:inline-block before:h-px before:w-5 before:bg-accent-pink">
+            &iquest;Por qu&eacute; elegirnos?
+          </p>
+          <h2 className="font-heading text-section font-extrabold leading-[1.1] tracking-[-1px]">
+            No todos los especialistas son iguales. Los nuestros son los <HighlightText>mejores.</HighlightText>
+          </h2>
+        </div>
+
+        <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-7 backdrop-blur-sm">
+          <p className="text-sm leading-relaxed text-text-muted">
+            El mercado digital est&aacute; lleno de agencias que prometen resultados.{" "}
+            <strong className="text-text-primary">Stellaris los demuestra.</strong>{" "}
+            Cada estrategia que dise&ntilde;amos est&aacute; respaldada por un equipo de &eacute;lite:
+            profesionales certificados, apasionados por la innovaci&oacute;n y
+            comprometidos con el crecimiento de tu organizaci&oacute;n.
+          </p>
+        </div>
       </div>
-      <div ref={gridRef} className="mt-13 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+
+      {/* Cards grid: 3 top + 2 bottom */}
+      <div ref={cardsRef} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {WHY_US_ITEMS.map((item) => (
           <article
             key={item.number}
-            className="rounded-2xl border border-border bg-surface p-7"
+            className="whyus-card group rounded-2xl border border-white/[0.06] bg-white/[0.02] p-7 backdrop-blur-sm transition-all duration-300 hover:border-accent-pink/20 hover:bg-white/[0.04]"
           >
-            <span
-              className="block font-heading text-[2.8rem] font-extrabold leading-none opacity-[0.08]"
-              aria-hidden="true"
-            >
-              {item.number}
-            </span>
-            <h3 className="mb-2 mt-3 font-heading text-md font-bold">
+            <div className="mb-5">
+              <span className="font-mono text-xs uppercase tracking-widest text-accent-pink/60">
+                No. {item.number}
+              </span>
+            </div>
+
+            <div className="mb-4 h-px w-8 bg-gradient-to-r from-accent-pink to-accent-purple transition-all duration-500 group-hover:w-full" />
+
+            <h3 className="mb-1 font-heading text-lg font-bold tracking-tight">
               {item.title}
             </h3>
+            <p className="mb-3 text-sm font-semibold text-text-primary">
+              {item.subtitle}
+            </p>
             <p className="text-sm leading-relaxed text-text-muted">
               {item.description}
             </p>
