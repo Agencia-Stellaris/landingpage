@@ -4,6 +4,7 @@ import { Footer } from "./components/layout/Footer";
 import { SmoothScroll } from "./components/layout/SmoothScroll";
 import { Hero } from "./components/sections/Hero";
 import { Stats } from "./components/sections/Stats";
+import { AboutUs } from "./components/sections/AboutUs";
 import { Services } from "./components/sections/Services";
 import { WhyUs } from "./components/sections/WhyUs";
 import { Process } from "./components/sections/Process";
@@ -25,6 +26,7 @@ export default function App() {
       <main id="main-content">
         <Hero />
         <Stats />
+        <AboutUs />
         <Services />
         <WhyUs />
         <Process />

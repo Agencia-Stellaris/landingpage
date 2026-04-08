@@ -12,7 +12,7 @@ export function WhyUs() {
   const gridRef = useScrollReveal<HTMLDivElement>(gridReveal);
 
   return (
-    <Container id="nosotros" alternate>
+    <Container id="por-que-elegirnos" alternate>
       <div ref={headerRef}>
         <SectionHeader
           label="&iquest;Por qu&eacute; elegirnos?"

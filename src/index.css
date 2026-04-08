@@ -105,6 +105,15 @@
   }
 }
 
+/* Hide scrollbar utility */
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Utility: gradient text — matches logo pink→purple */
 @utility gradient-text {
   background: linear-gradient(135deg, var(--color-accent-pink), var(--color-accent-purple));
