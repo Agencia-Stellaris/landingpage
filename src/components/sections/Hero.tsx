@@ -40,9 +40,10 @@ export function Hero() {
           <span className="gradient-text">domine el mundo digital</span>
         </h1>
 
-        <p className="mx-auto mb-10 max-w-[550px] text-lg leading-relaxed text-text-muted">
-          Estrategias de redes sociales, dise&ntilde;o web, WhatsApp y email
-          marketing para empresas que quieren resultados reales y medibles.
+        <p className="mx-auto mb-10 max-w-[700px] text-lg leading-relaxed text-text-muted">
+          Somos el equipo estrat&eacute;gico que tu empresa necesita para convertir
+          su presencia digital en su activo m&aacute;s rentable. Dise&ntilde;o de alto nivel,
+          campa&ntilde;as que convierten y tecnolog&iacute;a al servicio de tus objetivos: eso es Stellaris.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3.5">
