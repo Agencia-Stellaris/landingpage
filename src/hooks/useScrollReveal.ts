@@ -21,19 +21,18 @@ export function useScrollReveal<T extends HTMLElement>(
   options: ScrollRevealOptions = {},
 ) {
   const ref = useRef<T>(null);
+  const {
+    y = 50,
+    x = 0,
+    duration = 0.8,
+    stagger = 0.12,
+    start = "top 88%",
+    delay = 0,
+  } = options;
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
-    const {
-      y = 50,
-      x = 0,
-      duration = 0.8,
-      stagger = 0.12,
-      start = "top 88%",
-      delay = 0,
-    } = options;
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -57,7 +56,7 @@ export function useScrollReveal<T extends HTMLElement>(
     }, el);
 
     return () => ctx.revert();
-  }, [options.y, options.x, options.duration, options.stagger, options.start, options.delay]);
+  }, [y, x, duration, stagger, start, delay]);
 
   return ref;
 }
@@ -69,18 +68,17 @@ export function useReveal<T extends HTMLElement>(
   options: ScrollRevealOptions = {},
 ) {
   const ref = useRef<T>(null);
+  const {
+    y = 40,
+    x = 0,
+    duration = 0.9,
+    start = "top 88%",
+    delay = 0,
+  } = options;
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
-    const {
-      y = 40,
-      x = 0,
-      duration = 0.9,
-      start = "top 88%",
-      delay = 0,
-    } = options;
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -103,7 +101,7 @@ export function useReveal<T extends HTMLElement>(
     }, el);
 
     return () => ctx.revert();
-  }, [options.y, options.x, options.duration, options.start, options.delay]);
+  }, [y, x, duration, start, delay]);
 
   return ref;
 }

@@ -168,14 +168,22 @@ export function ContactCTA() {
         </form>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
-          <span className="flex items-center gap-2 text-sm text-text-muted">
+          <a
+            href={`https://wa.me/${CONTACT.phone.replace(/[^\d]/g, "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-text-muted transition-colors hover:text-accent-pink"
+          >
             <Phone size={16} aria-hidden="true" />
             {CONTACT.phone}
-          </span>
-          <span className="flex items-center gap-2 text-sm text-text-muted">
+          </a>
+          <a
+            href={`mailto:${CONTACT.email}`}
+            className="flex items-center gap-2 text-sm text-text-muted transition-colors hover:text-accent-pink"
+          >
             <Mail size={16} aria-hidden="true" />
             {CONTACT.email}
-          </span>
+          </a>
         </div>
       </div>
     </Container>
