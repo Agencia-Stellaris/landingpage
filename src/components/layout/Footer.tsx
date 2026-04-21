@@ -10,7 +10,6 @@ const SERVICE_LINKS = [
 
 const COMPANY_LINKS = [
   { label: "Nosotros", href: "#nosotros" },
-  { label: "Portafolio", href: "#portafolio" },
   { label: "Blog", href: "#blog" },
   { label: "Contacto", href: "#contacto" },
 ];

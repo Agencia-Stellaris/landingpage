@@ -8,8 +8,8 @@ import { AboutUs } from "./components/sections/AboutUs";
 import { Services } from "./components/sections/Services";
 import { WhyUs } from "./components/sections/WhyUs";
 import { Process } from "./components/sections/Process";
-import { Portfolio } from "./components/sections/Portfolio";
-import { Testimonials } from "./components/sections/Testimonials";
+// import { Portfolio } from "./components/sections/Portfolio";
+// import { Testimonials } from "./components/sections/Testimonials";
 import { Blog } from "./components/sections/Blog";
 import { ContactCTA } from "./components/sections/ContactCTA";
 
@@ -30,8 +30,8 @@ export default function App() {
         <Services />
         <WhyUs />
         <Process />
-        <Portfolio />
-        <Testimonials />
+        {/* <Portfolio /> */}
+        {/* <Testimonials /> */}
         <Blog />
         <ContactCTA />
       </main>
