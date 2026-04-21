@@ -1,5 +1,6 @@
 import { Button } from "../ui/Button";
 import { ChevronDown } from "lucide-react";
+import { Starfield } from "../ui/Starfield";
 
 export function Hero() {
   return (
@@ -8,14 +9,8 @@ export function Hero() {
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-[5%] pb-32 pt-28 text-center"
       aria-labelledby="hero-heading"
     >
-      {/* Background effects */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(124,58,237,0.18)_0%,transparent_70%),radial-gradient(ellipse_60%_50%_at_80%_80%,rgba(255,77,109,0.10)_0%,transparent_60%)]" />
-        <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(rgba(255,255,255,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.3)_1px,transparent_1px)] [background-size:50px_50px]" />
-      </div>
+      {/* Animated starfield background */}
+      <Starfield />
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl">
