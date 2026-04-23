@@ -10,7 +10,7 @@ import { WhyUs } from "./components/sections/WhyUs";
 import { Process } from "./components/sections/Process";
 // import { Portfolio } from "./components/sections/Portfolio";
 // import { Testimonials } from "./components/sections/Testimonials";
-import { Blog } from "./components/sections/Blog";
+// import { Blog } from "./components/sections/Blog";
 import { ContactCTA } from "./components/sections/ContactCTA";
 
 export default function App() {
@@ -32,7 +32,7 @@ export default function App() {
         <Process />
         {/* <Portfolio /> */}
         {/* <Testimonials /> */}
-        <Blog />
+        {/* <Blog /> */}
         <ContactCTA />
       </main>
 
