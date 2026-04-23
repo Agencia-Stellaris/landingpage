@@ -42,10 +42,10 @@ export function Hero() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3.5">
-          <Button href="#servicios">
+          <Button href="#contacto">
             Agenda tu diagn&oacute;stico gratuito
           </Button>
-          <Button variant="secondary" href="#contacto">
+          <Button variant="secondary" href="#servicios">
             Conoce nuestros servicios
           </Button>
         </div>
