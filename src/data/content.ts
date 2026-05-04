@@ -71,10 +71,10 @@ export interface SocialLink {
 // ─── Data ────────────────────────────────────────────────────────────
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/#inicio" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export const STATS: Stat[] = [

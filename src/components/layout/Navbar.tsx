@@ -3,6 +3,7 @@ import { clsx } from "clsx";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "../../data/content";
 import isologo from "../../assets/logo/stellaris_Isologo.png";
+import { HashLink } from "../routing/HashLink";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -19,35 +20,28 @@ export function Navbar() {
         aria-label="Navegaci&oacute;n principal"
       >
         {/* Logo: isologo + brand name */}
-        <a href="#inicio" className="flex items-center gap-2">
-          <img
-            src={isologo}
-            alt=""
-            className="h-7 w-7"
-            aria-hidden="true"
-          />
-          <span className="font-heading text-xl font-bold gradient-text">
-            stellaris
-          </span>
-        </a>
+        <HashLink to="/#inicio" className="flex items-center gap-2">
+          <img src={isologo} alt="" className="h-7 w-7" aria-hidden="true" />
+          <span className="font-heading text-xl font-bold gradient-text">stellaris</span>
+        </HashLink>
 
         {/* Desktop links */}
         <ul className="hidden gap-7 md:flex" role="list">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
+              <HashLink
+                to={link.href}
                 className="text-sm text-text-muted transition-colors hover:text-text-primary"
               >
                 {link.label}
-              </a>
+              </HashLink>
             </li>
           ))}
         </ul>
 
         {/* Desktop CTA */}
-        <a
-          href="#contacto"
+        <HashLink
+          to="/#contacto"
           className="group relative hidden items-center gap-2 overflow-hidden rounded-full gradient-bg px-5 py-2.5 font-heading text-sm font-bold text-white transition-all duration-300 hover:-translate-y-px hover:shadow-[0_4px_20px_rgba(255,77,109,0.3)] md:inline-flex"
         >
           <span
@@ -55,7 +49,7 @@ export function Navbar() {
             aria-hidden="true"
           />
           <span className="relative z-10">Solicitar cotizaci&oacute;n</span>
-        </a>
+        </HashLink>
 
         {/* Mobile toggle */}
         <button
@@ -83,23 +77,23 @@ export function Navbar() {
         <ul className="flex flex-col gap-1 px-[5%]" role="list">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
+              <HashLink
+                to={link.href}
                 className="block rounded-lg px-4 py-3 text-sm text-text-muted transition-colors hover:bg-white/[0.04] hover:text-text-primary"
                 onClick={close}
               >
                 {link.label}
-              </a>
+              </HashLink>
             </li>
           ))}
           <li className="mt-2">
-            <a
-              href="#contacto"
+            <HashLink
+              to="/#contacto"
               className="block rounded-full gradient-bg px-5 py-3 text-center font-heading text-sm font-bold text-white"
               onClick={close}
             >
               Solicitar cotizaci&oacute;n
-            </a>
+            </HashLink>
           </li>
         </ul>
       </div>
