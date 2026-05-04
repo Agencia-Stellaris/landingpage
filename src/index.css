@@ -38,8 +38,13 @@
 
 /* Base layer */
 @layer base {
+  /*
+   * Lenis owns smooth scrolling. Browser-native `scroll-behavior: smooth`
+   * would compete with Lenis's animated scroll, causing double-smoothing
+   * jitter on hash navigation.
+   */
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
