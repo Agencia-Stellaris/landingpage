@@ -15,9 +15,10 @@ export default function HomePage() {
 
   useEffect(() => {
     if (!hash) return;
+    // Pre-rAF guard: confirms the target exists in the current synchronous DOM.
+    // The rAF then waits one frame so layout/paint is settled before scrolling.
     const el = document.querySelector(hash);
     if (!el) return;
-    // Wait one frame so layout is settled (chunks lazily mounted, etc).
     const id = requestAnimationFrame(() => {
       if (lenis) lenis.scrollTo(el as HTMLElement, { offset: 0 });
       else (el as HTMLElement).scrollIntoView({ behavior: "smooth" });
