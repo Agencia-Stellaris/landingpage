@@ -34,6 +34,12 @@ export function HashLink({ to, onClick, children, ...rest }: HashLinkProps) {
           onClick?.(e);
           return;
         }
+        // Same path but element not yet in DOM (or Lenis not ready). Use
+        // `replace` to avoid pushing a duplicate history entry.
+        e.preventDefault();
+        navigate(to, { replace: true });
+        onClick?.(e);
+        return;
       }
 
       e.preventDefault();
