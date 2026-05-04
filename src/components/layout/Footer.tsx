@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { SOCIAL_LINKS } from "../../data/content";
 import isologo from "../../assets/logo/stellaris_Isologo.png";
 
-const SERVICE_LINKS: { label: string; href: string; isRoute?: boolean }[] = [
+const SERVICE_LINKS = [
   { label: "Redes Sociales", href: "#servicios" },
   { label: "Desarrollo Web", href: "#servicios" },
-  { label: "WhatsApp Marketing", href: "/servicios/whatsapp-marketing", isRoute: true },
+  { label: "WhatsApp Marketing", href: "/servicios/whatsapp-marketing" },
   { label: "Email Marketing", href: "#servicios" },
 ];
 
@@ -22,7 +22,7 @@ const LEGAL_LINKS = [
 
 interface FooterColumnProps {
   title: string;
-  links: { label: string; href: string; isRoute?: boolean }[];
+  links: { label: string; href: string }[];
 }
 
 function FooterColumn({ title, links }: FooterColumnProps) {
@@ -32,9 +32,10 @@ function FooterColumn({ title, links }: FooterColumnProps) {
       <ul className="space-y-2.5" role="list">
         {links.map((link) => {
           const cls = "text-sm text-text-muted transition-colors hover:text-text-primary";
+          const isInternalRoute = link.href.startsWith("/");
           return (
             <li key={link.label}>
-              {link.isRoute ? (
+              {isInternalRoute ? (
                 <Link to={link.href} className={cls}>
                   {link.label}
                 </Link>
