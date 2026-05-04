@@ -18,7 +18,7 @@ export const WHATSAPP_META: DocumentMeta = {
   keywords:
     "WhatsApp Marketing, WhatsApp Business API, automatización WhatsApp, marketing conversacional, agencia WhatsApp Colombia",
   canonical: "https://www.stellaris.com.co/servicios/whatsapp-marketing",
-  ogType: "website",
+  ogType: "article",
   ogImage: "https://www.stellaris.com.co/og/whatsapp-marketing.jpg",
 };
 
@@ -35,6 +35,7 @@ export const WHATSAPP_JSONLD = [
       logo: "https://www.stellaris.com.co/favicon.png",
     },
     areaServed: { "@type": "Country", name: "Colombia" },
+    inLanguage: "es-CO",
     description:
       "Estrategias de WhatsApp Marketing con WhatsApp Business API, automatizaciones, segmentación y campañas de difusión para empresas en Colombia.",
     url: "https://www.stellaris.com.co/servicios/whatsapp-marketing",
@@ -42,9 +43,9 @@ export const WHATSAPP_JSONLD = [
       "@type": "OfferCatalog",
       name: "Qué incluye",
       itemListElement: WHATSAPP_INCLUDES.map((name, i) => ({
-        "@type": "Offer",
+        "@type": "ListItem",
         position: i + 1,
-        itemOffered: { "@type": "Service", name },
+        item: { "@type": "Offer", itemOffered: { "@type": "Service", name } },
       })),
     },
   },
