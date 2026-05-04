@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import { SOCIAL_LINKS } from "../../data/content";
 import isologo from "../../assets/logo/stellaris_Isologo.png";
 
-const SERVICE_LINKS = [
+const SERVICE_LINKS: { label: string; href: string; isRoute?: boolean }[] = [
   { label: "Redes Sociales", href: "#servicios" },
   { label: "Desarrollo Web", href: "#servicios" },
-  { label: "WhatsApp Marketing", href: "#servicios" },
+  { label: "WhatsApp Marketing", href: "/servicios/whatsapp-marketing", isRoute: true },
   { label: "Email Marketing", href: "#servicios" },
 ];
 
@@ -21,7 +22,7 @@ const LEGAL_LINKS = [
 
 interface FooterColumnProps {
   title: string;
-  links: { label: string; href: string }[];
+  links: { label: string; href: string; isRoute?: boolean }[];
 }
 
 function FooterColumn({ title, links }: FooterColumnProps) {
@@ -29,16 +30,22 @@ function FooterColumn({ title, links }: FooterColumnProps) {
     <div>
       <h3 className="mb-4 text-sm font-bold tracking-wide">{title}</h3>
       <ul className="space-y-2.5" role="list">
-        {links.map((link) => (
-          <li key={link.label}>
-            <a
-              href={link.href}
-              className="text-sm text-text-muted transition-colors hover:text-text-primary"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
+        {links.map((link) => {
+          const cls = "text-sm text-text-muted transition-colors hover:text-text-primary";
+          return (
+            <li key={link.label}>
+              {link.isRoute ? (
+                <Link to={link.href} className={cls}>
+                  {link.label}
+                </Link>
+              ) : (
+                <a href={link.href} className={cls}>
+                  {link.label}
+                </a>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

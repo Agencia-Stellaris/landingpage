@@ -1,3 +1,5 @@
+import { useCallback } from "react";
+import { Link } from "react-router-dom";
 import { Container } from "../ui/Container";
 import { SectionHeader } from "../ui/SectionHeader";
 import { HighlightText } from "../ui/HighlightText";
@@ -8,44 +10,54 @@ import { useScrollReveal, useReveal } from "../../hooks/useScrollReveal";
 const headerReveal = { y: 40 };
 const gridReveal = { y: 50, stagger: 0.15 };
 
+function prefetchWhatsApp() {
+  void import("../../pages/WhatsAppMarketingPage");
+}
+
 export function Services() {
   const headerRef = useReveal<HTMLDivElement>(headerReveal);
   const gridRef = useScrollReveal<HTMLDivElement>(gridReveal);
+
+  const handlePrefetch = useCallback((href: string) => {
+    if (href === "/servicios/whatsapp-marketing") prefetchWhatsApp();
+  }, []);
 
   return (
     <Container id="servicios">
       <div ref={headerRef}>
         <SectionHeader
           label="Servicios"
-          titleContent={<>Todo lo que necesita<br/>tu <HighlightText>negocio digital</HighlightText></>}
+          titleContent={
+            <>
+              Todo lo que necesita
+              <br />
+              tu <HighlightText>negocio digital</HighlightText>
+            </>
+          }
           centered
         />
       </div>
-      <div ref={gridRef} className="mx-auto mt-13 grid max-w-4xl gap-5 sm:grid-cols-2">
+      <div
+        ref={gridRef}
+        className="mx-auto mt-13 grid max-w-4xl gap-5 sm:grid-cols-2"
+      >
         {SERVICES.map((service) => {
           const Icon = service.icon;
-          return (
-            <article
-              key={service.title}
-              className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]"
-            >
-              {/* iOS-style 3D icon */}
+          const isInternalRoute = service.href.startsWith("/");
+          const card = (
+            <article className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]">
               <div className="relative mb-6 h-14 w-14">
-                {/* Shadow under the icon */}
                 <div
                   className={`absolute inset-1 rounded-[18px] bg-gradient-to-br ${service.iconColor} opacity-40 blur-lg`}
                   aria-hidden="true"
                 />
-                {/* Main icon body */}
                 <div
                   className={`relative flex h-14 w-14 items-center justify-center rounded-[16px] bg-gradient-to-br ${service.iconColor} shadow-lg`}
                 >
-                  {/* Top highlight — glossy reflection */}
                   <div
                     className="pointer-events-none absolute inset-x-0 top-0 h-1/2 rounded-t-[16px] bg-gradient-to-b from-white/25 to-transparent"
                     aria-hidden="true"
                   />
-                  {/* Inner border for depth */}
                   <div
                     className="pointer-events-none absolute inset-px rounded-[15px] border border-white/15"
                     aria-hidden="true"
@@ -54,7 +66,6 @@ export function Services() {
                 </div>
               </div>
 
-              {/* Content */}
               <h3 className="mb-3 font-heading text-lg font-bold tracking-tight">
                 {service.title}
               </h3>
@@ -62,19 +73,35 @@ export function Services() {
                 {service.description}
               </p>
 
-              {/* Link */}
-              <a
-                href={service.href}
-                className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-pink transition-all group-hover:gap-2.5"
-              >
+              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-pink transition-all group-hover:gap-2.5">
                 Conoce m&aacute;s aqu&iacute;
                 <ArrowRight
                   size={14}
                   className="transition-transform group-hover:translate-x-1"
                   aria-hidden="true"
                 />
-              </a>
+              </span>
             </article>
+          );
+
+          if (isInternalRoute) {
+            return (
+              <Link
+                key={service.title}
+                to={service.href}
+                onMouseEnter={() => handlePrefetch(service.href)}
+                onFocus={() => handlePrefetch(service.href)}
+                className="block"
+              >
+                {card}
+              </Link>
+            );
+          }
+
+          return (
+            <a key={service.title} href={service.href} className="block">
+              {card}
+            </a>
           );
         })}
       </div>

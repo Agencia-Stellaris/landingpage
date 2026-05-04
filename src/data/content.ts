@@ -91,7 +91,7 @@ export const SERVICES: Service[] = [
     title: "WhatsApp Marketing",
     description:
       "WhatsApp tiene m\u00e1s de 2.000 millones de usuarios activos y tasas de apertura que superan el 90%. En Stellaris convertimos ese potencial en conversaciones reales que generan ventas, fidelizan clientes y construyen relaciones duraderas con tu audiencia.",
-    href: "#",
+    href: "/servicios/whatsapp-marketing",
   },
   {
     icon: FaInstagram,
