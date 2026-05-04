@@ -43,6 +43,10 @@ function setAttr(el: Element, attr: string, value: string) {
  * Mutates document head tags (title, description, canonical, OG, Twitter) and
  * optionally injects JSON-LD. Restores previous values on unmount so navigation
  * back to the home page keeps the original tags intact.
+ *
+ * The `meta` and `jsonLd` arguments are compared by reference. Pass stable
+ * references (module-level constants or memoized values) to avoid the effect
+ * re-running on every render of the consuming component.
  */
 export function useDocumentMeta(meta: DocumentMeta, jsonLd?: JsonLd[] | JsonLd) {
   useEffect(() => {
@@ -65,6 +69,8 @@ export function useDocumentMeta(meta: DocumentMeta, jsonLd?: JsonLd[] | JsonLd) 
           el.remove();
         } else if (prev !== null) {
           setAttr(el, attr, prev);
+        } else {
+          el.removeAttribute(attr);
         }
       });
     };
