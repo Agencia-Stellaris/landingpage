@@ -18,6 +18,10 @@ function prefetchRedes() {
   void import("../../pages/RedesSocialesPage");
 }
 
+function prefetchWeb() {
+  void import("../../pages/DesarrolloWebPage");
+}
+
 export function Services() {
   const headerRef = useReveal<HTMLDivElement>(headerReveal);
   const gridRef = useScrollReveal<HTMLDivElement>(gridReveal);
@@ -25,6 +29,7 @@ export function Services() {
   const handlePrefetch = useCallback((href: string) => {
     if (href === "/servicios/whatsapp-marketing") prefetchWhatsApp();
     if (href === "/servicios/redes-sociales") prefetchRedes();
+    if (href === "/servicios/desarrollo-web") prefetchWeb();
   }, []);
 
   return (
