@@ -23,15 +23,63 @@ export interface WhatsAppPillar {
   iconKey: WhatsAppIconKey;
 }
 
-export const WHATSAPP_INCLUDES: readonly string[] = [
-  "Configuración y optimización de WhatsApp Business API.",
-  "Estrategia de comunicación y flujos de conversación personalizados.",
-  "Segmentación de la base de contactos según intereses, interacción y otros factores.",
-  "Automatización de respuestas y secuencias de seguimiento.",
-  "Campañas de difusión segmentadas por perfil de cliente.",
-  "Integración con CRM para gestión de leads y seguimiento comercial.",
-  "Chatbots inteligentes para atención 24/7.",
-  "Métricas de entrega, apertura y conversión.",
+export const WHATSAPP_INCLUDES: readonly WhatsAppFeature[] = [
+  {
+    title: "WhatsApp Business API",
+    description:
+      "Configuración, verificación y optimización de la API oficial de Meta para escalar sin restricciones.",
+    tag: "API",
+    iconKey: "api",
+  },
+  {
+    title: "Estrategia de comunicación",
+    description:
+      "Definimos tono, flujos de conversación y journey por etapa del embudo, alineado a tu marca.",
+    tag: "Estrategia",
+    iconKey: "strategy",
+  },
+  {
+    title: "Segmentación inteligente",
+    description:
+      "Organizamos tu base por intereses, etapa, comportamiento y datos demográficos para impactar mejor.",
+    tag: "CRM",
+    iconKey: "segment",
+  },
+  {
+    title: "Automatizaciones y flujos",
+    description:
+      "Respuestas automáticas, secuencias de seguimiento y disparadores en tiempo real, sin que muevas un dedo.",
+    tag: "Auto",
+    iconKey: "automate",
+  },
+  {
+    title: "Campañas de difusión",
+    description:
+      "Envíos masivos segmentados por perfil de cliente, con plantillas aprobadas y métricas en vivo.",
+    tag: "Broadcast",
+    iconKey: "broadcast",
+  },
+  {
+    title: "Integración con CRM",
+    description:
+      "Conectamos WhatsApp con tu CRM para gestionar leads, pipeline y atención comercial en un solo lugar.",
+    tag: "Integración",
+    iconKey: "crm",
+  },
+  {
+    title: "Chatbots inteligentes",
+    description:
+      "Atención 24/7 con NLP que clasifica, responde y escala a un humano cuando hace falta.",
+    tag: "IA",
+    iconKey: "bot",
+  },
+  {
+    title: "Métricas y analytics",
+    description:
+      "Dashboards de entrega, apertura, respuesta y conversión. Decisiones con datos, no con intuición.",
+    tag: "Datos",
+    iconKey: "metrics",
+  },
 ];
 
 export const WHATSAPP_PILLARS: readonly WhatsAppPillar[] = [
@@ -83,10 +131,13 @@ export const WHATSAPP_JSONLD = [
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Qué incluye",
-      itemListElement: WHATSAPP_INCLUDES.map((name, i) => ({
+      itemListElement: WHATSAPP_INCLUDES.map((entry, i) => ({
         "@type": "ListItem",
         position: i + 1,
-        item: { "@type": "Offer", itemOffered: { "@type": "Service", name } },
+        item: {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: entry.title },
+        },
       })),
     },
   },
