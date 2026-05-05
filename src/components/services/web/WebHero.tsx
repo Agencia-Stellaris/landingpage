@@ -46,7 +46,7 @@ export function WebHero() {
               className="font-heading text-[clamp(2.4rem,5.4vw,4.4rem)] font-extrabold leading-[1.05] tracking-[-1.5px]"
             >
               Tu sitio web no es un gasto. Es tu{" "}
-              <HighlightText>mejor vendedor</HighlightText>, siempre disponible.
+              <HighlightText>mejor</HighlightText> vendedor, siempre disponible.
             </h1>
 
             <p className="mt-7 max-w-xl text-[1.0625rem] leading-[1.6] text-text-muted md:text-lg md:leading-relaxed">
