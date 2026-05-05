@@ -76,13 +76,6 @@ export function WhatsAppHero() {
               </HashLink>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <span className="pill">
-                <span className="dot" aria-hidden="true" />
-                Meta Business Partner
-              </span>
-              <span className="pill">API oficial &middot; WhatsApp Business</span>
-            </div>
           </div>
         </div>
 
