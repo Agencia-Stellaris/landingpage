@@ -14,12 +14,17 @@ function prefetchWhatsApp() {
   void import("../../pages/WhatsAppMarketingPage");
 }
 
+function prefetchRedes() {
+  void import("../../pages/RedesSocialesPage");
+}
+
 export function Services() {
   const headerRef = useReveal<HTMLDivElement>(headerReveal);
   const gridRef = useScrollReveal<HTMLDivElement>(gridReveal);
 
   const handlePrefetch = useCallback((href: string) => {
     if (href === "/servicios/whatsapp-marketing") prefetchWhatsApp();
+    if (href === "/servicios/redes-sociales") prefetchRedes();
   }, []);
 
   return (

@@ -8,6 +8,7 @@ import { ScrollToTop } from "./components/routing/ScrollToTop";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const WhatsAppMarketingPage = lazy(() => import("./pages/WhatsAppMarketingPage"));
+const RedesSocialesPage = lazy(() => import("./pages/RedesSocialesPage"));
 
 export default function App() {
   return (
@@ -29,6 +30,10 @@ export default function App() {
               <Route
                 path="/servicios/whatsapp-marketing"
                 element={<WhatsAppMarketingPage />}
+              />
+              <Route
+                path="/servicios/redes-sociales"
+                element={<RedesSocialesPage />}
               />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
