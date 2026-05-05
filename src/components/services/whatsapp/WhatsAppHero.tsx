@@ -68,12 +68,12 @@ export function WhatsAppHero() {
                 Empezar ahora
                 <ArrowRight size={16} aria-hidden="true" />
               </HashLink>
-              <a
-                href="#incluye"
+              <HashLink
+                to="#incluye"
                 className="inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-white/30 hover:bg-white/[0.03]"
               >
                 Ver qu&eacute; incluye
-              </a>
+              </HashLink>
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
