@@ -99,7 +99,7 @@ export const SERVICES: Service[] = [
     title: "Redes Sociales",
     description:
       "La gesti\u00f3n profesional de redes sociales va mucho m\u00e1s all\u00e1 de publicar contenido. En Stellaris construimos comunidades reales, narrativas de marca que conectan y estrategias de contenido que generan conversaciones, prospectos y ventas.",
-    href: "#",
+    href: "/servicios/redes-sociales",
   },
   {
     icon: Globe,
