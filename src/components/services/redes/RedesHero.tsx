@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Starfield } from "../../ui/Starfield";
 import { HashLink } from "../../routing/HashLink";
 import { HighlightText } from "../../ui/HighlightText";
@@ -45,8 +45,8 @@ export function RedesHero() {
               id="hero-heading"
               className="font-heading text-[clamp(2.4rem,5.4vw,4.4rem)] font-extrabold leading-[1.05] tracking-[-1.5px]"
             >
-              Convierte tus redes en tu{" "}
-              <HighlightText>canal m&aacute;s poderoso.</HighlightText>
+              Convierte tus redes en tu canal m&aacute;s{" "}
+              <HighlightText>poderoso</HighlightText>.
             </h1>
 
             <p className="mt-7 max-w-xl text-[1.0625rem] leading-[1.6] text-text-muted md:text-lg md:leading-relaxed">
@@ -61,7 +61,6 @@ export function RedesHero() {
                 className="inline-flex items-center gap-2 rounded-full gradient-bg px-6 py-3 font-heading text-sm font-bold text-white transition-all hover:-translate-y-px hover:shadow-[0_8px_30px_rgba(255,77,109,0.35)]"
               >
                 Diagn&oacute;stico gratuito
-                <ArrowRight size={16} aria-hidden="true" />
               </HashLink>
               <HashLink
                 to="#incluye"

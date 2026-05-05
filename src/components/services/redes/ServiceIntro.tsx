@@ -37,7 +37,7 @@ export function ServiceIntro() {
             </p>
             <h2
               id="pillars-heading"
-              className="font-heading text-[clamp(1.9rem,3.8vw,2.9rem)] font-extrabold leading-[1.15] tracking-[-1px]"
+              className="whitespace-nowrap font-heading text-[clamp(1.9rem,3.8vw,2.9rem)] font-extrabold leading-[1.15] tracking-[-1px]"
             >
               M&aacute;s que <HighlightText>publicar.</HighlightText>
             </h2>
