@@ -198,3 +198,143 @@
 @media (prefers-reduced-motion: reduce) {
   .typing-dot { animation: none; opacity: 0.55; }
 }
+
+/* ============================================
+ * WhatsApp Marketing — section-scoped utilities
+ * ============================================ */
+
+/* Aurora line — gradient horizontal usado como separador top */
+.aurora-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 77, 109, 0.45),
+    rgba(124, 58, 237, 0.45),
+    transparent
+  );
+}
+
+/* Dot grid — fondo decorativo de puntos cada 22px */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Pill — chip pequeño usado en trust strip del Hero */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+.pill .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #22d39c;
+  box-shadow: 0 0 0 3px rgba(34, 211, 156, 0.18);
+  animation: pill-dot-pulse 1.8s infinite;
+}
+@keyframes pill-dot-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 156, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(34, 211, 156, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pill .dot {
+    animation: none;
+  }
+}
+
+/* Numeric badge — usado en header de "¿Qué incluye?" */
+.num-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.65rem;
+  background: rgba(255, 77, 109, 0.1);
+  border: 1px solid rgba(255, 77, 109, 0.25);
+  color: var(--color-accent-pink);
+  font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Feature card — hover gradient con mouse tracking via CSS vars --mx/--my */
+.feature-card {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.025) 0%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 0.35s ease,
+    background 0.35s ease;
+  overflow: hidden;
+}
+.feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 77, 109, 0.1),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 77, 109, 0.22);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 77, 109, 0.04) 0%,
+    rgba(124, 58, 237, 0.04) 100%
+  );
+}
+.feature-card:hover::before {
+  opacity: 1;
+}
+.feature-card .ico-wrap {
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.feature-card:hover .ico-wrap {
+  transform: scale(1.06) rotate(-3deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .feature-card,
+  .feature-card .ico-wrap {
+    transition: none;
+  }
+  .feature-card:hover {
+    transform: none;
+  }
+  .feature-card:hover .ico-wrap {
+    transform: none;
+  }
+}
+
+/* WhatsApp ChatMockup body — fixed height to prevent layout shift
+   as messages cycle in/out (resolves the previous min-height issue). */
+.chat-shell {
+  height: 560px;
+}

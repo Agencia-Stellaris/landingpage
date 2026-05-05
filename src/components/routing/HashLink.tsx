@@ -3,14 +3,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useLenis } from "../../contexts/LenisContext";
 
 interface HashLinkProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> {
-  /** Target like "/#servicios" or "/#contacto". */
+  /** Target like "/#servicios", "/#contacto", or "#in-page-anchor". */
   to: string;
 }
 
 /**
- * Anchor that works from any route. If the user is already on `/`, it scrolls
- * to the hash via Lenis. Otherwise it navigates to `/#hash` and HomePage's
- * hash-scroll effect handles the scroll on mount.
+ * Anchor that works from any route. Three cases:
+ *   1. `to="#anchor"` — same-page; always scrolls via Lenis on the current route.
+ *   2. `to="/#hash"` from `/` — scrolls via Lenis.
+ *   3. `to="/#hash"` from a sub-route — navigates to `/#hash`; HomePage's
+ *      hash-scroll effect handles the scroll on mount.
  */
 export function HashLink({ to, onClick, children, ...rest }: HashLinkProps) {
   const { pathname } = useLocation();
@@ -24,9 +26,11 @@ export function HashLink({ to, onClick, children, ...rest }: HashLinkProps) {
       const hashIndex = to.indexOf("#");
       if (hashIndex === -1) return;
       const hash = to.slice(hashIndex);
-      const targetPath = to.slice(0, hashIndex) || "/";
+      // Hash-only `to` (e.g. "#contacto") is implicitly same-page.
+      const isSamePath =
+        hashIndex === 0 || pathname === (to.slice(0, hashIndex) || "/");
 
-      if (pathname === targetPath) {
+      if (isSamePath) {
         const el = document.querySelector(hash);
         if (el && lenis) {
           e.preventDefault();
