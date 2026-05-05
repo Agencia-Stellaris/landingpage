@@ -81,12 +81,12 @@ export function ServiceIncludes() {
             </p>
             <h2
               id="includes-heading"
-              className="font-heading text-section font-extrabold tracking-[-1px]"
+              className="font-heading text-[clamp(1.9rem,3.8vw,2.9rem)] font-extrabold leading-[1.15] tracking-[-1px]"
             >
               &iquest;Qu&eacute; incluye{" "}
               <HighlightText>este servicio?</HighlightText>
             </h2>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-text-muted md:text-lg">
+            <p className="mt-4 max-w-xl text-[1.0625rem] leading-[1.6] text-text-muted md:text-lg md:leading-relaxed">
               Un sistema completo &mdash;no piezas sueltas&mdash; para que
               WhatsApp trabaje por ti las 24 horas.
             </p>

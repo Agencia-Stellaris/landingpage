@@ -332,3 +332,9 @@
     transform: none;
   }
 }
+
+/* WhatsApp ChatMockup body — fixed height to prevent layout shift
+   as messages cycle in/out (resolves the previous min-height issue). */
+.chat-shell {
+  height: 560px;
+}

@@ -53,10 +53,10 @@ export function ChatMockup() {
       ref={containerRef}
       role="img"
       aria-label="Vista previa de conversación de WhatsApp con Stellaris"
-      className="relative mx-auto w-full max-w-[320px]"
+      className="relative mx-auto w-full max-w-[330px]"
     >
       <div
-        className="pointer-events-none absolute -inset-8 -z-10 rounded-[3rem] bg-[radial-gradient(ellipse_at_center,rgba(124,58,237,0.32),transparent_70%)] blur-2xl"
+        className="pointer-events-none absolute -inset-10 -z-10 rounded-[3rem] bg-[radial-gradient(ellipse_at_center,rgba(124,58,237,0.34),transparent_70%)] blur-2xl"
         aria-hidden="true"
       />
 
@@ -80,7 +80,7 @@ export function ChatMockup() {
 
           {/* Body */}
           <div
-            className="min-h-[340px] space-y-2.5 bg-[#0E1A14] bg-[radial-gradient(circle_at_20%_10%,rgba(37,211,102,0.06),transparent_50%)] px-3 py-4 text-[13px] leading-snug"
+            className="chat-shell space-y-2.5 overflow-hidden bg-[#0E1A14] bg-[radial-gradient(circle_at_20%_10%,rgba(37,211,102,0.06),transparent_50%)] px-3 py-4 text-[13px] leading-snug"
             aria-hidden="true"
           >
             <div className="text-center text-[10px] uppercase tracking-wider text-white/30">

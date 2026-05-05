@@ -37,12 +37,12 @@ export function ServiceIntro() {
             </p>
             <h2
               id="pillars-heading"
-              className="font-heading text-section font-extrabold tracking-[-1px]"
+              className="font-heading text-[clamp(1.9rem,3.8vw,2.9rem)] font-extrabold leading-[1.15] tracking-[-1px]"
             >
               Donde tu cliente <HighlightText>s&iacute; responde.</HighlightText>
             </h2>
           </div>
-          <div className="space-y-5 text-base leading-relaxed text-text-muted md:text-lg md:leading-[1.7]">
+          <div className="space-y-5 text-[1.0625rem] leading-[1.6] text-text-muted md:text-lg md:leading-[1.7]">
             <p>
               Convertimos el potencial de WhatsApp en{" "}
               <span className="font-semibold text-text-primary">

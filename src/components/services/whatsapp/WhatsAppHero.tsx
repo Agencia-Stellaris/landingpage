@@ -48,14 +48,14 @@ export function WhatsAppHero() {
           <div ref={textRef}>
             <h1
               id="hero-heading"
-              className="font-heading text-hero font-extrabold tracking-[-1.5px]"
+              className="font-heading text-[clamp(2.4rem,5.4vw,4.4rem)] font-extrabold leading-[1.05] tracking-[-1.5px]"
             >
               El canal m&aacute;s poderoso de{" "}
               <HighlightText>comunicaci&oacute;n directa</HighlightText>, al
               servicio de tu estrategia.
             </h1>
 
-            <p className="mt-7 max-w-xl text-base leading-relaxed text-text-muted md:text-lg">
+            <p className="mt-7 max-w-xl text-[1.0625rem] leading-[1.6] text-text-muted md:text-lg md:leading-relaxed">
               Convertimos WhatsApp en una m&aacute;quina de conversi&oacute;n:
               estrategia, automatizaci&oacute;n y datos en un solo flujo.
             </p>
