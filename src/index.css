@@ -338,3 +338,104 @@
 .chat-shell {
   height: 560px;
 }
+
+/* ============================================
+ * Redes Sociales — section-scoped utilities
+ * ============================================ */
+
+/* Phone shell — alias semántico de chat-shell para el SocialMockup. */
+.phone-shell {
+  height: 560px;
+}
+
+/* Story ring — conic gradient pad usado en el feed mockup. */
+.story-ring {
+  padding: 2px;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 220deg,
+    #ff4d6d,
+    #7c3aed,
+    #f59e0b,
+    #ff4d6d
+  );
+}
+
+/* Metric chip — chip pequeño en covers del feed. */
+.metric-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  color: var(--color-text-primary);
+}
+
+/* Gradient covers — fondo decorativo de cada FeedPost. */
+.grad-cover-1 {
+  background: linear-gradient(135deg, #ff4d6d 0%, #7c3aed 100%);
+}
+.grad-cover-2 {
+  background: linear-gradient(135deg, #22d39c 0%, #0ea5e9 100%);
+}
+.grad-cover-3 {
+  background: linear-gradient(135deg, #f59e0b 0%, #ff4d6d 100%);
+}
+.grad-cover-4 {
+  background: linear-gradient(135deg, #7c3aed 0%, #0ea5e9 100%);
+}
+
+/* Feed scroll — track vertical de los 4 posts dentro del phone shell. */
+@keyframes feed-scroll {
+  0%,
+  12% {
+    transform: translateY(0);
+  }
+  24%,
+  38% {
+    transform: translateY(-280px);
+  }
+  50%,
+  64% {
+    transform: translateY(-560px);
+  }
+  76%,
+  90% {
+    transform: translateY(-840px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.feed-track {
+  animation: feed-scroll 18s ease-in-out infinite;
+}
+
+/* Like pulse — heart de cada FeedPost. */
+@keyframes like-pulse {
+  0%,
+  70%,
+  100% {
+    transform: scale(1);
+  }
+  78% {
+    transform: scale(1.35);
+  }
+  86% {
+    transform: scale(0.95);
+  }
+}
+.like-pulse {
+  animation: like-pulse 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feed-track,
+  .like-pulse {
+    animation: none;
+  }
+}
