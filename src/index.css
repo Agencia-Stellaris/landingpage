@@ -476,8 +476,8 @@
   font-size: 11px;
   line-height: 1.55;
 }
-.tk-key { color: #ff4d6d; }
-.tk-tag { color: #7c3aed; }
+.tk-key { color: var(--color-accent-pink); }
+.tk-tag { color: var(--color-accent-purple); }
 .tk-str { color: #22d39c; }
 .tk-com { color: #5b5274; font-style: italic; }
 .tk-fn  { color: #f59e0b; }
