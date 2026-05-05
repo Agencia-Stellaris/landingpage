@@ -1,5 +1,28 @@
 import type { DocumentMeta } from "../../hooks/useDocumentMeta";
 
+export type WhatsAppIconKey =
+  | "api"
+  | "strategy"
+  | "segment"
+  | "automate"
+  | "broadcast"
+  | "crm"
+  | "bot"
+  | "metrics";
+
+export interface WhatsAppFeature {
+  title: string;
+  description: string;
+  tag: string;
+  iconKey: WhatsAppIconKey;
+}
+
+export interface WhatsAppPillar {
+  title: string;
+  description: string;
+  iconKey: WhatsAppIconKey;
+}
+
 export const WHATSAPP_INCLUDES: readonly string[] = [
   "Configuración y optimización de WhatsApp Business API.",
   "Estrategia de comunicación y flujos de conversación personalizados.",
@@ -9,6 +32,24 @@ export const WHATSAPP_INCLUDES: readonly string[] = [
   "Integración con CRM para gestión de leads y seguimiento comercial.",
   "Chatbots inteligentes para atención 24/7.",
   "Métricas de entrega, apertura y conversión.",
+];
+
+export const WHATSAPP_PILLARS: readonly WhatsAppPillar[] = [
+  {
+    title: "Conversaciones reales",
+    description: "Que generan ventas y fidelizan",
+    iconKey: "strategy",
+  },
+  {
+    title: "Mensaje correcto",
+    description: "A la persona correcta, en el momento correcto",
+    iconKey: "segment",
+  },
+  {
+    title: "WhatsApp Business API",
+    description: "Automatizaciones inteligentes y flujos personalizados",
+    iconKey: "api",
+  },
 ];
 
 export const WHATSAPP_META: DocumentMeta = {
