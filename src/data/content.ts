@@ -107,7 +107,7 @@ export const SERVICES: Service[] = [
     title: "Dise\u00f1o y desarrollo web",
     description:
       "En Stellaris dise\u00f1amos y desarrollamos sitios web que no solo se ven bien, sino que trabajan estrat\u00e9gicamente por tu negocio. Cada elemento visual, cada estructura de navegaci\u00f3n y cada l\u00ednea de c\u00f3digo est\u00e1 pensada para atraer, convencer y convertir.",
-    href: "#",
+    href: "/servicios/desarrollo-web",
   },
   {
     icon: AtSign,
