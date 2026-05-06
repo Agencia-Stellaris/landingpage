@@ -69,13 +69,6 @@ export function WebHero() {
                 Ver qu&eacute; incluye
               </HashLink>
             </div>
-
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <span className="pill">
-                <span className="dot" /> SEO &middot; AEO &middot; GEO
-              </span>
-              <span className="pill">UX/UI &middot; Neuromarketing</span>
-            </div>
           </div>
         </div>
 
