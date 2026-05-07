@@ -1,4 +1,4 @@
-import { type FormEvent, useCallback, useRef, useState } from "react";
+import { type FormEvent, type ReactNode, useCallback, useRef, useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { Container } from "../ui/Container";
@@ -14,43 +14,55 @@ const contentReveal = { y: 50 };
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
-export function ContactCTA() {
+interface ContactCTAProps {
+  label?: string;
+  title?: string;
+  titleContent?: ReactNode;
+  subtitle?: string;
+  serviceTag?: string;
+}
+
+export function ContactCTA({
+  label = "Contacto",
+  title = "¿Listo para crecer juntos?",
+  titleContent,
+  subtitle = "¡Déjanos tus datos! Cuéntanos sobre tu negocio y te prepararemos una propuesta personalizada sin compromiso.",
+  serviceTag = "home",
+}: ContactCTAProps = {}) {
   const formRef = useRef<HTMLFormElement>(null);
   const contentRef = useReveal<HTMLDivElement>(contentReveal);
   const [status, setStatus] = useState<FormStatus>("idle");
 
-  const handleSubmit = useCallback(async (e: FormEvent) => {
-    e.preventDefault();
-    const form = formRef.current;
-    if (!form || status === "sending") return;
+  const handleSubmit = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault();
+      const form = formRef.current;
+      if (!form || status === "sending") return;
 
-    setStatus("sending");
+      setStatus("sending");
+      const data = new FormData(form);
 
-    const data = new FormData(form);
-
-    try {
-      await addDoc(collection(db, "contactRequests"), {
-        name: data.get("name"),
-        email: data.get("email"),
-        message: data.get("message"),
-        createdAt: serverTimestamp(),
-      });
-      setStatus("success");
-      form.reset();
-      setTimeout(() => setStatus("idle"), 5000);
-    } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
-    }
-  }, [status]);
+      try {
+        await addDoc(collection(db, "contactRequests"), {
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+          service: serviceTag,
+          createdAt: serverTimestamp(),
+        });
+        setStatus("success");
+        form.reset();
+        setTimeout(() => setStatus("idle"), 5000);
+      } catch {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 4000);
+      }
+    },
+    [status, serviceTag],
+  );
 
   return (
-    <Container
-      id="contacto"
-      alternate
-      className="relative overflow-hidden"
-    >
-      {/* Background glow */}
+    <Container id="contacto" alternate className="relative overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,rgba(124,58,237,0.15)_0%,transparent_70%)]"
         aria-hidden="true"
@@ -58,9 +70,10 @@ export function ContactCTA() {
 
       <div ref={contentRef} className="relative z-10 mx-auto max-w-lg text-center">
         <SectionHeader
-          label="Contacto"
-          title="&iquest;Listo para crecer juntos?"
-          subtitle="&iexcl;D&eacute;janos tus datos! Cu&eacute;ntanos sobre tu negocio y te prepararemos una propuesta personalizada sin compromiso."
+          label={label}
+          title={titleContent ? undefined : title}
+          titleContent={titleContent}
+          subtitle={subtitle}
           centered
         />
 
@@ -70,7 +83,6 @@ export function ContactCTA() {
           className="mt-10 space-y-5 text-left"
           aria-label="Formulario de contacto"
         >
-          {/* Nombre */}
           <div>
             <label htmlFor="cta-name" className="mb-1.5 block text-sm font-medium">
               Nombre
@@ -86,7 +98,6 @@ export function ContactCTA() {
             />
           </div>
 
-          {/* Correo */}
           <div>
             <label htmlFor="cta-email" className="mb-1.5 block text-sm font-medium">
               Correo electr&oacute;nico
@@ -102,7 +113,6 @@ export function ContactCTA() {
             />
           </div>
 
-          {/* Mensaje */}
           <div>
             <label htmlFor="cta-message" className="mb-1.5 block text-sm font-medium">
               Mensaje
@@ -117,7 +127,6 @@ export function ContactCTA() {
             />
           </div>
 
-          {/* Terms checkbox */}
           <div className="flex items-start gap-2.5">
             <input
               id="cta-terms"
@@ -128,13 +137,15 @@ export function ContactCTA() {
             />
             <label htmlFor="cta-terms" className="cursor-pointer text-sm text-text-muted">
               Acepto los{" "}
-              <a href="#" className="font-medium text-accent-pink underline underline-offset-2 hover:text-text-primary">
+              <a
+                href="#"
+                className="font-medium text-accent-pink underline underline-offset-2 hover:text-text-primary"
+              >
                 t&eacute;rminos y condiciones
               </a>
             </label>
           </div>
 
-          {/* Submit */}
           <button
             type="submit"
             disabled={status === "sending"}
@@ -153,7 +164,6 @@ export function ContactCTA() {
             )}
           </button>
 
-          {/* Status messages */}
           {status === "success" && (
             <p className="flex items-center gap-2 text-sm font-medium text-accent-green">
               <CheckCircle2 size={16} />

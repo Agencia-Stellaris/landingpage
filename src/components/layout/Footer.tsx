@@ -1,16 +1,18 @@
+import { Link } from "react-router-dom";
 import { SOCIAL_LINKS } from "../../data/content";
 import isologo from "../../assets/logo/stellaris_Isologo.png";
+import { HashLink } from "../routing/HashLink";
 
 const SERVICE_LINKS = [
-  { label: "Redes Sociales", href: "#servicios" },
-  { label: "Desarrollo Web", href: "#servicios" },
-  { label: "WhatsApp Marketing", href: "#servicios" },
-  { label: "Email Marketing", href: "#servicios" },
+  { label: "Redes Sociales", href: "/#servicios" },
+  { label: "Desarrollo Web", href: "/#servicios" },
+  { label: "WhatsApp Marketing", href: "/servicios/whatsapp-marketing" },
+  { label: "Email Marketing", href: "/#servicios" },
 ];
 
 const COMPANY_LINKS = [
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 const LEGAL_LINKS = [
@@ -29,16 +31,28 @@ function FooterColumn({ title, links }: FooterColumnProps) {
     <div>
       <h3 className="mb-4 text-sm font-bold tracking-wide">{title}</h3>
       <ul className="space-y-2.5" role="list">
-        {links.map((link) => (
-          <li key={link.label}>
-            <a
-              href={link.href}
-              className="text-sm text-text-muted transition-colors hover:text-text-primary"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
+        {links.map((link) => {
+          const cls = "text-sm text-text-muted transition-colors hover:text-text-primary";
+          const isHashLink = link.href.includes("#") && link.href !== "#";
+          const isInternalRoute = link.href.startsWith("/") && !isHashLink;
+          return (
+            <li key={link.label}>
+              {isHashLink ? (
+                <HashLink to={link.href} className={cls}>
+                  {link.label}
+                </HashLink>
+              ) : isInternalRoute ? (
+                <Link to={link.href} className={cls}>
+                  {link.label}
+                </Link>
+              ) : (
+                <a href={link.href} className={cls}>
+                  {link.label}
+                </a>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
@@ -55,12 +69,12 @@ export function Footer() {
         <div className="mb-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
           {/* Brand */}
           <div>
-            <a href="#inicio" className="mb-4 flex items-center gap-2">
+            <HashLink to="/#inicio" className="mb-4 flex items-center gap-2">
               <img src={isologo} alt="" className="h-7 w-7" aria-hidden="true" />
               <span className="font-heading text-xl font-bold gradient-text">
                 stellaris
               </span>
-            </a>
+            </HashLink>
             <p className="max-w-[240px] text-sm leading-relaxed text-text-muted">
               Agencia de marketing digital especializada en hacer crecer marcas
               en el entorno digital con estrategia, creatividad y resultados

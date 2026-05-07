@@ -71,10 +71,10 @@ export interface SocialLink {
 // ─── Data ────────────────────────────────────────────────────────────
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/#inicio" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export const STATS: Stat[] = [
@@ -91,7 +91,7 @@ export const SERVICES: Service[] = [
     title: "WhatsApp Marketing",
     description:
       "WhatsApp tiene m\u00e1s de 2.000 millones de usuarios activos y tasas de apertura que superan el 90%. En Stellaris convertimos ese potencial en conversaciones reales que generan ventas, fidelizan clientes y construyen relaciones duraderas con tu audiencia.",
-    href: "#",
+    href: "/servicios/whatsapp-marketing",
   },
   {
     icon: FaInstagram,
@@ -99,7 +99,7 @@ export const SERVICES: Service[] = [
     title: "Redes Sociales",
     description:
       "La gesti\u00f3n profesional de redes sociales va mucho m\u00e1s all\u00e1 de publicar contenido. En Stellaris construimos comunidades reales, narrativas de marca que conectan y estrategias de contenido que generan conversaciones, prospectos y ventas.",
-    href: "#",
+    href: "/servicios/redes-sociales",
   },
   {
     icon: Globe,
@@ -107,7 +107,7 @@ export const SERVICES: Service[] = [
     title: "Dise\u00f1o y desarrollo web",
     description:
       "En Stellaris dise\u00f1amos y desarrollamos sitios web que no solo se ven bien, sino que trabajan estrat\u00e9gicamente por tu negocio. Cada elemento visual, cada estructura de navegaci\u00f3n y cada l\u00ednea de c\u00f3digo est\u00e1 pensada para atraer, convencer y convertir.",
-    href: "#",
+    href: "/servicios/desarrollo-web",
   },
   {
     icon: AtSign,
@@ -115,7 +115,7 @@ export const SERVICES: Service[] = [
     title: "Email Marketing",
     description:
       "Con un retorno muy alto, el email marketing sigue siendo uno de los canales m\u00e1s rentables del ecosistema digital. En Stellaris dise\u00f1amos estrategias que nutren leads, reactivan clientes y generan ingresos predecibles para tu organizaci\u00f3n.",
-    href: "#",
+    href: "/servicios/email-marketing",
   },
 ];
 
