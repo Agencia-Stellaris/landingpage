@@ -1,19 +1,16 @@
 import { Link } from "react-router-dom";
-import { SOCIAL_LINKS } from "../../data/content";
+import { NAV_LINKS, SOCIAL_LINKS } from "../../data/content";
 import isologo from "../../assets/logo/stellaris_Isologo.png";
 import { HashLink } from "../routing/HashLink";
 
 const SERVICE_LINKS = [
-  { label: "Redes Sociales", href: "/#servicios" },
-  { label: "Desarrollo Web", href: "/#servicios" },
+  { label: "Redes Sociales", href: "/servicios/redes-sociales" },
+  { label: "Desarrollo Web", href: "/servicios/desarrollo-web" },
   { label: "WhatsApp Marketing", href: "/servicios/whatsapp-marketing" },
-  { label: "Email Marketing", href: "/#servicios" },
+  { label: "Email Marketing", href: "/servicios/email-marketing" },
 ];
 
-const COMPANY_LINKS = [
-  { label: "Nosotros", href: "/#nosotros" },
-  { label: "Contacto", href: "/#contacto" },
-];
+const COMPANY_LINKS = NAV_LINKS.filter((link) => link.href !== "/#servicios");
 
 const LEGAL_LINKS = [
   { label: "Pol\u00edtica de privacidad", href: "#" },
