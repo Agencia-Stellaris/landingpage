@@ -115,7 +115,7 @@ export const SERVICES: Service[] = [
     title: "Email Marketing",
     description:
       "Con un retorno muy alto, el email marketing sigue siendo uno de los canales m\u00e1s rentables del ecosistema digital. En Stellaris dise\u00f1amos estrategias que nutren leads, reactivan clientes y generan ingresos predecibles para tu organizaci\u00f3n.",
-    href: "#",
+    href: "/servicios/email-marketing",
   },
 ];
 
