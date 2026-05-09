@@ -10,6 +10,7 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const WhatsAppMarketingPage = lazy(() => import("./pages/WhatsAppMarketingPage"));
 const RedesSocialesPage = lazy(() => import("./pages/RedesSocialesPage"));
 const DesarrolloWebPage = lazy(() => import("./pages/DesarrolloWebPage"));
+const EmailMarketingPage = lazy(() => import("./pages/EmailMarketingPage"));
 
 export default function App() {
   return (
@@ -39,6 +40,10 @@ export default function App() {
               <Route
                 path="/servicios/desarrollo-web"
                 element={<DesarrolloWebPage />}
+              />
+              <Route
+                path="/servicios/email-marketing"
+                element={<EmailMarketingPage />}
               />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

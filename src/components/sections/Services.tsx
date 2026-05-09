@@ -22,6 +22,10 @@ function prefetchWeb() {
   void import("../../pages/DesarrolloWebPage");
 }
 
+function prefetchEmail() {
+  void import("../../pages/EmailMarketingPage");
+}
+
 export function Services() {
   const headerRef = useReveal<HTMLDivElement>(headerReveal);
   const gridRef = useScrollReveal<HTMLDivElement>(gridReveal);
@@ -30,6 +34,7 @@ export function Services() {
     if (href === "/servicios/whatsapp-marketing") prefetchWhatsApp();
     if (href === "/servicios/redes-sociales") prefetchRedes();
     if (href === "/servicios/desarrollo-web") prefetchWeb();
+    if (href === "/servicios/email-marketing") prefetchEmail();
   }, []);
 
   return (
