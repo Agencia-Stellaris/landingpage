@@ -136,7 +136,9 @@ export function ContactCTA({
             <label htmlFor="cta-terms" className="cursor-pointer text-sm text-text-muted">
               Acepto los{" "}
               <a
-                href="#"
+                href="/politica-de-privacidad"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-medium text-accent-pink underline underline-offset-2 hover:text-text-primary"
               >
                 t&eacute;rminos y condiciones

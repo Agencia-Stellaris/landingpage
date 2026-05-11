@@ -10,6 +10,7 @@ const WhatsAppMarketingPage = lazy(() => import("./pages/WhatsAppMarketingPage")
 const RedesSocialesPage = lazy(() => import("./pages/RedesSocialesPage"));
 const DesarrolloWebPage = lazy(() => import("./pages/DesarrolloWebPage"));
 const EmailMarketingPage = lazy(() => import("./pages/EmailMarketingPage"));
+const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 
 export default function App() {
   useEffect(() => {
@@ -70,6 +71,10 @@ export default function App() {
               <Route
                 path="/servicios/email-marketing"
                 element={<EmailMarketingPage />}
+              />
+              <Route
+                path="/politica-de-privacidad"
+                element={<PrivacyPolicyPage />}
               />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

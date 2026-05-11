@@ -13,9 +13,8 @@ const SERVICE_LINKS = [
 const COMPANY_LINKS = NAV_LINKS.filter((link) => link.href !== "/#servicios");
 
 const LEGAL_LINKS = [
-  { label: "Pol\u00edtica de privacidad", href: "#" },
+  { label: "Pol\u00edtica de privacidad", href: "/politica-de-privacidad" },
   { label: "T\u00e9rminos de servicio", href: "#" },
-  { label: "Cookies", href: "#" },
 ];
 
 interface FooterColumnProps {
