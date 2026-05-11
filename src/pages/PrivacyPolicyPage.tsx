@@ -47,8 +47,8 @@ export default function PrivacyPolicyPage() {
       >
         <div className="mx-auto max-w-3xl px-[5%]">
           <nav aria-label="Migas de pan" className="mb-7">
-            <ol className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[2px] text-text-muted">
-              <li>
+            <ol className="inline-flex items-center gap-2 text-xs font-semibold uppercase leading-none tracking-[2px] text-text-muted">
+              <li className="inline-flex items-center">
                 <HashLink
                   to="/#inicio"
                   className="inline-flex items-center gap-2 transition-colors hover:text-accent-pink"
@@ -57,10 +57,16 @@ export default function PrivacyPolicyPage() {
                   Inicio
                 </HashLink>
               </li>
-              <li className="text-text-muted/40" aria-hidden="true">
+              <li
+                className="inline-flex items-center text-text-muted/40"
+                aria-hidden="true"
+              >
                 /
               </li>
-              <li className="text-accent-pink" aria-current="page">
+              <li
+                className="inline-flex items-center text-accent-pink"
+                aria-current="page"
+              >
                 Política de privacidad
               </li>
             </ol>
