@@ -30,7 +30,7 @@ export function CookieBanner({ onChoice }: CookieBannerProps) {
             onClick={() => onChoice("rejected")}
             className="rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-text-primary transition-colors hover:border-white/30 hover:bg-white/[0.03]"
           >
-            Solo necesarias
+            Rechazar
           </button>
           <button
             type="button"
