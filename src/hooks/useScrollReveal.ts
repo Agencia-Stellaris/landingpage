@@ -1,8 +1,5 @@
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { loadGsap } from "../lib/gsap";
 
 interface ScrollRevealOptions {
   y?: number;
@@ -33,29 +30,37 @@ export function useScrollReveal<T extends HTMLElement>(
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    let cancelled = false;
+    let ctx: { revert: () => void } | null = null;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        el.children,
-        { y, x, opacity: 0 },
-        {
-          y: 0,
-          x: 0,
-          opacity: 1,
-          duration,
-          stagger,
-          delay,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: el,
-            start,
-            toggleActions: "play none none reverse",
+    void loadGsap().then(({ gsap }) => {
+      if (cancelled || !el.isConnected) return;
+      ctx = gsap.context(() => {
+        gsap.fromTo(
+          el.children,
+          { y, x, opacity: 0 },
+          {
+            y: 0,
+            x: 0,
+            opacity: 1,
+            duration,
+            stagger,
+            delay,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start,
+              toggleActions: "play none none reverse",
+            },
           },
-        },
-      );
-    }, el);
+        );
+      }, el);
+    });
 
-    return () => ctx.revert();
+    return () => {
+      cancelled = true;
+      ctx?.revert();
+    };
   }, [y, x, duration, stagger, start, delay]);
 
   return ref;
@@ -79,28 +84,36 @@ export function useReveal<T extends HTMLElement>(
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    let cancelled = false;
+    let ctx: { revert: () => void } | null = null;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        el,
-        { y, x, opacity: 0 },
-        {
-          y: 0,
-          x: 0,
-          opacity: 1,
-          duration,
-          delay,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: el,
-            start,
-            toggleActions: "play none none reverse",
+    void loadGsap().then(({ gsap }) => {
+      if (cancelled || !el.isConnected) return;
+      ctx = gsap.context(() => {
+        gsap.fromTo(
+          el,
+          { y, x, opacity: 0 },
+          {
+            y: 0,
+            x: 0,
+            opacity: 1,
+            duration,
+            delay,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start,
+              toggleActions: "play none none reverse",
+            },
           },
-        },
-      );
-    }, el);
+        );
+      }, el);
+    });
 
-    return () => ctx.revert();
+    return () => {
+      cancelled = true;
+      ctx?.revert();
+    };
   }, [y, x, duration, start, delay]);
 
   return ref;

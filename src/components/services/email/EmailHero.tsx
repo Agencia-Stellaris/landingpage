@@ -2,14 +2,9 @@ import { ArrowLeft } from "lucide-react";
 import { Starfield } from "../../ui/Starfield";
 import { HashLink } from "../../routing/HashLink";
 import { HighlightText } from "../../ui/HighlightText";
-import { useReveal } from "../../../hooks/useScrollReveal";
 import { EmailMockup } from "./EmailMockup";
 
 export function EmailHero() {
-  const breadcrumbRef = useReveal<HTMLElement>({ y: 20 });
-  const textRef = useReveal<HTMLDivElement>({ y: 40 });
-  const mockupRef = useReveal<HTMLDivElement>({ y: 40, delay: 0.15 });
-
   return (
     <section
       id="top"
@@ -20,7 +15,7 @@ export function EmailHero() {
 
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 px-[5%] pb-24 pt-8 lg:grid-cols-[1fr_1.05fr] lg:pb-32 lg:pt-14">
         <div>
-          <nav ref={breadcrumbRef} aria-label="Migas de pan" className="mb-7">
+          <nav aria-label="Migas de pan" className="mb-7">
             <ol className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[2px] text-text-muted">
               <li>
                 <HashLink
@@ -40,7 +35,7 @@ export function EmailHero() {
             </ol>
           </nav>
 
-          <div ref={textRef}>
+          <div>
             <h1
               id="hero-heading"
               className="font-heading text-[clamp(2.4rem,5.4vw,4.4rem)] font-extrabold leading-[1.05] tracking-[-1.5px]"
@@ -72,7 +67,7 @@ export function EmailHero() {
           </div>
         </div>
 
-        <div ref={mockupRef}>
+        <div>
           <EmailMockup />
         </div>
       </div>

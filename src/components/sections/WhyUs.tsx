@@ -1,12 +1,9 @@
 import { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "../ui/Container";
 import { HighlightText } from "../ui/HighlightText";
 import { WHY_US_ITEMS } from "../../data/content";
 import { useReveal } from "../../hooks/useScrollReveal";
-
-gsap.registerPlugin(ScrollTrigger);
+import { loadGsap } from "../../lib/gsap";
 
 const headerReveal = { y: 40 };
 
@@ -17,30 +14,37 @@ export function WhyUs() {
   useEffect(() => {
     const el = cardsRef.current;
     if (!el) return;
-
     const cards = el.querySelectorAll<HTMLElement>(".whyus-card");
     if (!cards.length) return;
+    let cancelled = false;
+    let ctx: { revert: () => void } | null = null;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        cards,
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 88%",
-            toggleActions: "play none none reverse",
+    void loadGsap().then(({ gsap }) => {
+      if (cancelled || !el.isConnected) return;
+      ctx = gsap.context(() => {
+        gsap.fromTo(
+          cards,
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 88%",
+              toggleActions: "play none none reverse",
+            },
           },
-        },
-      );
-    }, el);
+        );
+      }, el);
+    });
 
-    return () => ctx.revert();
+    return () => {
+      cancelled = true;
+      ctx?.revert();
+    };
   }, []);
 
   return (

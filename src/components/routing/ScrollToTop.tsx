@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLenis } from "../../contexts/LenisContext";
+import { getLoadedGsap } from "../../lib/gsap";
 
 /**
  * Resets scroll to top whenever the route pathname changes.
@@ -9,7 +9,9 @@ import { useLenis } from "../../contexts/LenisContext";
  *
  * After scroll is reset, requests a `ScrollTrigger.refresh()` on the next frame
  * so any reveal triggers in the newly-mounted page recalculate their start/end
- * offsets against the corrected scroll position.
+ * offsets against the corrected scroll position — but only if gsap has already
+ * been loaded by some other consumer. We never force the gsap chunk to load
+ * here, since route navigation alone shouldn't bring it in.
  */
 export function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -22,7 +24,9 @@ export function ScrollToTop() {
     } else {
       window.scrollTo(0, 0);
     }
-    const id = requestAnimationFrame(() => ScrollTrigger.refresh());
+    const bundle = getLoadedGsap();
+    if (!bundle) return;
+    const id = requestAnimationFrame(() => bundle.ScrollTrigger.refresh());
     return () => cancelAnimationFrame(id);
   }, [pathname, hash, lenis]);
 
