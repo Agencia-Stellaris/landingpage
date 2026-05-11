@@ -72,9 +72,6 @@ export default function PrivacyPolicyPage() {
             </ol>
           </nav>
 
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[2.5px] text-accent-pink">
-            Sección 05 — Política de Datos y Privacidad
-          </p>
           <h1
             id="privacy-heading"
             className="font-heading text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-1px]"
