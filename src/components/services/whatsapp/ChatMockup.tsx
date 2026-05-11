@@ -66,7 +66,15 @@ export function ChatMockup() {
           <div className="flex items-center gap-3 bg-[#1F2C2A] px-4 py-3" aria-hidden="true">
             <ArrowLeft size={16} className="text-white/70" />
             <div className="grid h-9 w-9 place-items-center overflow-hidden rounded-full gradient-bg">
-              <img src={isologo} alt="" className="h-6 w-6" width={24} height={24} />
+              <img
+                src={isologo}
+                alt=""
+                width={24}
+                height={24}
+                loading="lazy"
+                decoding="async"
+                className="h-6 w-6"
+              />
             </div>
             <div className="flex-1">
               <div className="font-heading text-sm font-semibold text-white">Stellaris</div>

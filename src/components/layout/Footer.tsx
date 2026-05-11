@@ -67,7 +67,16 @@ export function Footer() {
           {/* Brand */}
           <div>
             <HashLink to="/#inicio" className="mb-4 flex items-center gap-2">
-              <img src={isologo} alt="" className="h-7 w-7" aria-hidden="true" />
+              <img
+                src={isologo}
+                alt=""
+                width={28}
+                height={28}
+                loading="lazy"
+                decoding="async"
+                className="h-7 w-7"
+                aria-hidden="true"
+              />
               <span className="font-heading text-xl font-bold gradient-text">
                 stellaris
               </span>
