@@ -88,10 +88,13 @@ export function Footer() {
             <div className="mt-5 flex gap-2.5">
               {SOCIAL_LINKS.map((social) => {
                 const Icon = social.icon;
+                const isExternal = social.href.startsWith("http");
                 return (
                   <a
                     key={social.label}
                     href={social.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
                     className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface text-text-muted transition-all hover:border-accent-pink/30 hover:bg-accent-pink/[0.08] hover:text-text-primary"
                     aria-label={social.label}
                   >
