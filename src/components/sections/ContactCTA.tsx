@@ -1,6 +1,4 @@
 import { type FormEvent, type ReactNode, useCallback, useRef, useState } from "react";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../../lib/firebase";
 import { Container } from "../ui/Container";
 import { SectionHeader } from "../ui/SectionHeader";
 import { CONTACT } from "../../data/content";
@@ -43,12 +41,12 @@ export function ContactCTA({
       const data = new FormData(form);
 
       try {
-        await addDoc(collection(db, "contactRequests"), {
+        const { addContactRequest } = await import("../../lib/firebase");
+        await addContactRequest({
           name: data.get("name"),
           email: data.get("email"),
           message: data.get("message"),
           service: serviceTag,
-          createdAt: serverTimestamp(),
         });
         setStatus("success");
         form.reset();

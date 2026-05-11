@@ -1,6 +1,5 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import "./lib/firebase"; // Initialize Firebase + Analytics
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
 import { SmoothScroll } from "./components/layout/SmoothScroll";
@@ -13,6 +12,33 @@ const DesarrolloWebPage = lazy(() => import("./pages/DesarrolloWebPage"));
 const EmailMarketingPage = lazy(() => import("./pages/EmailMarketingPage"));
 
 export default function App() {
+  useEffect(() => {
+    // Defer Firebase Analytics until the browser is idle so it never blocks
+    // the initial render or LCP. Falls back to setTimeout in browsers without
+    // requestIdleCallback (older Safari).
+    const w = window as Window &
+      typeof globalThis & {
+        requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+        cancelIdleCallback?: (id: number) => void;
+      };
+
+    const load = () => {
+      void import("./lib/firebase").then(({ loadAnalytics }) => loadAnalytics());
+    };
+
+    const id = w.requestIdleCallback
+      ? w.requestIdleCallback(load, { timeout: 4000 })
+      : window.setTimeout(load, 2000);
+
+    return () => {
+      if (w.cancelIdleCallback) {
+        w.cancelIdleCallback(id);
+      } else {
+        window.clearTimeout(id);
+      }
+    };
+  }, []);
+
   return (
     <BrowserRouter>
       <SmoothScroll>
