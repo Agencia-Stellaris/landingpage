@@ -281,7 +281,11 @@ export const SOCIAL_LINKS: SocialLink[] = [
     icon: InstagramIcon,
     href: "https://www.instagram.com/agenciastellaris",
   },
-  { label: "Facebook", icon: FacebookIcon, href: "#" },
+  {
+    label: "Facebook",
+    icon: FacebookIcon,
+    href: "https://www.facebook.com/agenciastellaris",
+  },
 ];
 
 export const CONTACT = {
