@@ -19,6 +19,21 @@ interface ShootingStar {
   max: number;
 }
 
+// Defer first paint of the canvas so it never competes with LCP.
+// The RAF loop only runs while the canvas is in (or near) the viewport.
+const IDLE_TIMEOUT_MS = 1000;
+const VIEWPORT_MARGIN_PX = "200px";
+
+type IdleHandle = number;
+type WindowWithIdle = Window &
+  typeof globalThis & {
+    requestIdleCallback?: (
+      cb: () => void,
+      opts?: { timeout: number },
+    ) => IdleHandle;
+    cancelIdleCallback?: (id: IdleHandle) => void;
+  };
+
 export function Starfield() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -30,9 +45,10 @@ export function Starfield() {
 
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     let reducedMotion = mediaQuery.matches;
+    let isVisible = true;
+    let started = false;
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
     let W = 0;
     let H = 0;
     let stars: Star[] = [];
@@ -137,27 +153,73 @@ export function Starfield() {
         return sh.life < sh.max;
       });
 
-      if (!reducedMotion) {
+      if (!reducedMotion && isVisible) {
         raf = requestAnimationFrame(draw);
       }
+    };
+
+    // Single switch that reconciles motion preference + viewport visibility
+    // with the RAF loop. Always cancels any pending frame first so we never
+    // double-schedule.
+    const updateLoop = () => {
+      cancelAnimationFrame(raf);
+      raf = 0;
+      if (!started || !isVisible) return;
+      if (reducedMotion) {
+        // Render a single static frame and stop.
+        draw();
+        return;
+      }
+      raf = requestAnimationFrame(draw);
     };
 
     const onMotionChange = (e: MediaQueryListEvent) => {
       reducedMotion = e.matches;
-      if (!reducedMotion) {
-        raf = requestAnimationFrame(draw);
-      }
+      updateLoop();
     };
 
-    resize();
-    window.addEventListener("resize", resize);
-    mediaQuery.addEventListener("change", onMotionChange);
-    draw();
+    // Pause the RAF loop when the canvas is well outside the viewport.
+    // Big rootMargin gives a buffer so the loop is back on by the time
+    // the user actually sees it again.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        isVisible = entry.isIntersecting;
+        updateLoop();
+      },
+      { rootMargin: VIEWPORT_MARGIN_PX },
+    );
+    observer.observe(canvas);
+
+    // Defer the first init off the LCP critical path. requestIdleCallback
+    // typically fires in 50–200ms once the page is quiet; the timeout caps
+    // the wait at 1s so the starfield never feels missing.
+    const w = window as WindowWithIdle;
+    let idleId: IdleHandle | undefined;
+    const start = () => {
+      idleId = undefined;
+      resize();
+      window.addEventListener("resize", resize);
+      mediaQuery.addEventListener("change", onMotionChange);
+      started = true;
+      updateLoop();
+    };
+    idleId = w.requestIdleCallback
+      ? w.requestIdleCallback(start, { timeout: IDLE_TIMEOUT_MS })
+      : window.setTimeout(start, 500);
 
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
-      mediaQuery.removeEventListener("change", onMotionChange);
+      observer.disconnect();
+      if (idleId !== undefined) {
+        if (w.cancelIdleCallback) w.cancelIdleCallback(idleId);
+        else window.clearTimeout(idleId);
+      }
+      if (started) {
+        window.removeEventListener("resize", resize);
+        mediaQuery.removeEventListener("change", onMotionChange);
+      }
     };
   }, []);
 
