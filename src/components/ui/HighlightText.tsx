@@ -1,8 +1,5 @@
 import { useRef, useEffect, type ReactNode } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { loadGsap } from "../../lib/gsap";
 
 interface HighlightTextProps {
   children: ReactNode;
@@ -16,32 +13,45 @@ export function HighlightText({ children, className = "" }: HighlightTextProps) 
 
   useEffect(() => {
     if (!containerRef.current || !highlightRef.current || !textRef.current) return;
+    let cancelled = false;
+    let ctx: { revert: () => void } | null = null;
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 82%",
-          end: "top -20%",
-          toggleActions: "play reverse play reverse",
-        },
-      });
+    void loadGsap().then(({ gsap }) => {
+      if (cancelled) return;
+      const container = containerRef.current;
+      const highlight = highlightRef.current;
+      const text = textRef.current;
+      if (!container || !highlight || !text) return;
 
-      tl.fromTo(
-        highlightRef.current,
-        { scaleX: 0, transformOrigin: "left center" },
-        { scaleX: 1, duration: 1, ease: "power3.out" },
-      );
+      ctx = gsap.context(() => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container,
+            start: "top 82%",
+            end: "top -20%",
+            toggleActions: "play reverse play reverse",
+          },
+        });
 
-      tl.fromTo(
-        textRef.current,
-        { color: "rgb(240, 240, 248)" },
-        { color: "#ffffff", duration: 0.5, ease: "power2.out" },
-        0.4,
-      );
-    }, containerRef);
+        tl.fromTo(
+          highlight,
+          { scaleX: 0, transformOrigin: "left center" },
+          { scaleX: 1, duration: 1, ease: "power3.out" },
+        );
 
-    return () => ctx.revert();
+        tl.fromTo(
+          text,
+          { color: "rgb(240, 240, 248)" },
+          { color: "#ffffff", duration: 0.5, ease: "power2.out" },
+          0.4,
+        );
+      }, container);
+    });
+
+    return () => {
+      cancelled = true;
+      ctx?.revert();
+    };
   }, []);
 
   return (
