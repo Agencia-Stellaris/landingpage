@@ -82,9 +82,9 @@ export function Footer() {
               </span>
             </HashLink>
             <p className="max-w-[240px] text-sm leading-relaxed text-text-muted">
-              Agencia de marketing digital especializada en hacer crecer marcas
-              en el entorno digital con estrategia, creatividad y resultados
-              medibles.
+              Somos un equipo freelance de perfiles seniors, especializados en
+              hacer crecer marcas en el entorno digital con estrategia,
+              creatividad y resultados medibles.
             </p>
             <div className="mt-5 flex gap-2.5">
               {SOCIAL_LINKS.map((social) => {
