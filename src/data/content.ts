@@ -5,8 +5,6 @@ import {
   InstagramIcon,
   FacebookIcon,
   LinkedInIcon,
-  YouTubeIcon,
-  TikTokIcon,
 } from "../components/ui/BrandIcons";
 
 // ─── Types ───────────────────────────────────────────────────────────
@@ -274,10 +272,12 @@ export const BLOG_POSTS: BlogPost[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = [
   { label: "LinkedIn", icon: LinkedInIcon, href: "#" },
-  { label: "Instagram", icon: InstagramIcon, href: "#" },
+  {
+    label: "Instagram",
+    icon: InstagramIcon,
+    href: "https://www.instagram.com/agenciastellaris",
+  },
   { label: "Facebook", icon: FacebookIcon, href: "#" },
-  { label: "TikTok", icon: TikTokIcon, href: "#" },
-  { label: "YouTube", icon: YouTubeIcon, href: "#" },
 ];
 
 export const CONTACT = {
