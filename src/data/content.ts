@@ -1,6 +1,13 @@
 import type { ComponentType } from "react";
 import { Globe, AtSign, Sparkles, Landmark, Flame, ChartPie, Layers, Webhook } from "lucide-react";
-import { FaWhatsapp, FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube, FaTiktok } from "react-icons/fa6";
+import {
+  WhatsAppIcon,
+  InstagramIcon,
+  FacebookIcon,
+  LinkedInIcon,
+  YouTubeIcon,
+  TikTokIcon,
+} from "../components/ui/BrandIcons";
 
 // ─── Types ───────────────────────────────────────────────────────────
 
@@ -86,7 +93,7 @@ export const STATS: Stat[] = [
 
 export const SERVICES: Service[] = [
   {
-    icon: FaWhatsapp,
+    icon: WhatsAppIcon,
     iconColor: "from-[#25d366] to-[#128c3e]",
     title: "WhatsApp Marketing",
     description:
@@ -94,7 +101,7 @@ export const SERVICES: Service[] = [
     href: "/servicios/whatsapp-marketing",
   },
   {
-    icon: FaInstagram,
+    icon: InstagramIcon,
     iconColor: "from-[#f77737] via-[#e1306c] to-[#833ab4]",
     title: "Redes Sociales",
     description:
@@ -266,11 +273,11 @@ export const BLOG_POSTS: BlogPost[] = [
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  { label: "LinkedIn", icon: FaLinkedinIn, href: "#" },
-  { label: "Instagram", icon: FaInstagram, href: "#" },
-  { label: "Facebook", icon: FaFacebookF, href: "#" },
-  { label: "TikTok", icon: FaTiktok, href: "#" },
-  { label: "YouTube", icon: FaYoutube, href: "#" },
+  { label: "LinkedIn", icon: LinkedInIcon, href: "#" },
+  { label: "Instagram", icon: InstagramIcon, href: "#" },
+  { label: "Facebook", icon: FacebookIcon, href: "#" },
+  { label: "TikTok", icon: TikTokIcon, href: "#" },
+  { label: "YouTube", icon: YouTubeIcon, href: "#" },
 ];
 
 export const CONTACT = {
