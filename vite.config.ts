@@ -25,6 +25,25 @@ export default defineConfig({
           }
           return "assets/[name]-[hash][extname]";
         },
+        // Split heavy vendors into stable chunks so route changes don't
+        // invalidate them, and the browser can parallelize their downloads
+        // over HTTP/2. Firebase is intentionally not grouped — it's loaded
+        // lazily by the app (see lib/firebase.ts) and Vite already emits one
+        // chunk per Firebase sub-module on demand.
+        manualChunks: (id) => {
+          if (!id.includes("node_modules")) return;
+
+          if (id.includes("react-router")) return "react-vendor";
+          if (/node_modules[\\/]react[\\/]/.test(id)) return "react-vendor";
+          if (/node_modules[\\/]react-dom[\\/]/.test(id)) return "react-vendor";
+          if (/node_modules[\\/]scheduler[\\/]/.test(id)) return "react-vendor";
+
+          if (id.includes("gsap")) return "gsap";
+          if (id.includes("lenis")) return "lenis";
+
+          if (id.includes("lucide-react") || id.includes("react-icons"))
+            return "icons";
+        },
       },
     },
   },
