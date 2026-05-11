@@ -35,9 +35,24 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
 
-    <!-- Preconnect to font origins (fallback if fontsource fails) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preload critical fonts (heading + body 400, latin subset).
+         File names are kept stable by assetFileNames in vite.config.ts so
+         these URLs don't break between builds. Prevents FOUT-driven CLS on
+         the hero <h1>. -->
+    <link
+      rel="preload"
+      href="/assets/space-grotesk-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/assets/dm-sans-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
   </head>
   <body>
     <div id="root"></div>
