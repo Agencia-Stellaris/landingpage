@@ -271,7 +271,11 @@ export const BLOG_POSTS: BlogPost[] = [
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  { label: "LinkedIn", icon: LinkedInIcon, href: "#" },
+  {
+    label: "LinkedIn",
+    icon: LinkedInIcon,
+    href: "https://www.linkedin.com/company/agenciastellaris/",
+  },
   {
     label: "Instagram",
     icon: InstagramIcon,
