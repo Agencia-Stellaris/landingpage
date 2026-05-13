@@ -8,8 +8,12 @@ import { WhyUs } from "../components/sections/WhyUs";
 import { Process } from "../components/sections/Process";
 import { ContactCTA } from "../components/sections/ContactCTA";
 import { useLenis } from "../contexts/LenisContext";
+import { useDocumentMeta } from "../hooks/useDocumentMeta";
+import { HOME_META, HOME_JSONLD } from "../data/home";
 
 export default function HomePage() {
+  useDocumentMeta(HOME_META, HOME_JSONLD);
+
   const { hash } = useLocation();
   const lenis = useLenis();
 
