@@ -13,20 +13,40 @@ const META: DocumentMeta = {
   ogType: "article",
 };
 
-const JSONLD = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: "Política de Tratamiento de Datos Personales y Privacidad",
-  description: META.description,
-  url: CANONICAL,
-  inLanguage: "es-CO",
-  dateModified: LAST_UPDATED,
-  publisher: {
-    "@type": "Organization",
-    name: "Stellaris",
-    url: "https://www.stellaris.com.co",
+const JSONLD = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Política de Tratamiento de Datos Personales y Privacidad",
+    description: META.description,
+    url: CANONICAL,
+    inLanguage: "es-CO",
+    dateModified: LAST_UPDATED,
+    publisher: {
+      "@type": "Organization",
+      name: "Stellaris",
+      url: "https://www.stellaris.com.co",
+    },
   },
-};
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: "https://www.stellaris.com.co/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Política de privacidad",
+        item: CANONICAL,
+      },
+    ],
+  },
+];
 
 const sectionHeading =
   "mt-10 mb-4 font-heading text-2xl font-extrabold tracking-tight text-text-primary md:text-3xl";
