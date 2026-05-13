@@ -15,12 +15,12 @@ export function CookieBanner({ onChoice }: CookieBannerProps) {
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <p className="text-sm leading-relaxed text-text-muted md:flex-1">
           Usamos cookies de análisis para entender cómo navegás el sitio y mejorarlo.
-          No recopilamos datos personales identificables.{" "}
+          No recopilamos datos personales identificables. Consulta nuestra{" "}
           <Link
             to="/politica-de-privacidad#cookies"
             className="font-medium text-accent-pink underline underline-offset-2 hover:text-text-primary"
           >
-            Más información
+            política de cookies
           </Link>
           .
         </p>
