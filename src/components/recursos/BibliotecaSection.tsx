@@ -16,13 +16,9 @@ export function BibliotecaSection() {
   return (
     <section
       id="biblioteca"
-      className="relative overflow-hidden px-[5%] py-[110px]"
+      className="relative overflow-hidden px-[5%] pb-[110px] pt-10"
       aria-labelledby="biblioteca-heading"
     >
-      <div
-        aria-hidden="true"
-        className="orb -left-32 top-20 h-72 w-72 bg-accent-purple/10"
-      />
       <div
         aria-hidden="true"
         className="orb -right-32 bottom-10 h-72 w-72 bg-accent-pink/10"
@@ -34,7 +30,6 @@ export function BibliotecaSection() {
           className="mb-12 grid items-end gap-8 lg:grid-cols-2"
         >
           <div>
-            <p className="label-pill mb-3.5">Recursos</p>
             <h2
               id="biblioteca-heading"
               className="font-heading text-section font-extrabold tracking-[-1px]"
@@ -43,9 +38,8 @@ export function BibliotecaSection() {
             </h2>
           </div>
           <p className="text-sm leading-relaxed text-text-muted md:text-[0.95rem]">
-            Una biblioteca abierta de guías, plantillas, casos y herramientas
-            que el equipo de Stellaris usa todos los días. Gratis y sin
-            formulario.
+            Una biblioteca de guías, plantillas, casos y herramientas que el
+            equipo de Stellaris usa todos los días. Gratis y sin formulario.
           </p>
         </div>
 
