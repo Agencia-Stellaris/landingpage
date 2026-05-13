@@ -8,9 +8,12 @@ export function RecursosHero() {
       className="relative overflow-hidden pt-32 pb-10"
       aria-labelledby="recursos-heading"
     >
+      {/* Large purple wash on the left — sized to bleed past the hero into
+          BibliotecaSection so the page reads as one continuous block, not
+          two stacked sections. */}
       <div
         aria-hidden="true"
-        className="orb -left-32 top-20 h-80 w-80 bg-accent-purple/15"
+        className="orb -left-40 top-10 h-[640px] w-[640px] bg-accent-purple/15"
       />
       <div
         aria-hidden="true"
@@ -18,15 +21,31 @@ export function RecursosHero() {
       />
 
       <div className="relative z-10 mx-auto max-w-6xl px-[5%]">
-        <HashLink
-          to="/#inicio"
-          className="mb-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[2px] text-text-muted transition-colors hover:text-accent-pink"
-        >
-          <ArrowLeft size={12} aria-hidden="true" />
-          Volver al inicio
-        </HashLink>
-
-        <p className="label-pill mb-4">Recursos</p>
+        <nav aria-label="Migas de pan" className="mb-7">
+          <ol className="inline-flex items-center gap-2 text-xs font-semibold uppercase leading-none tracking-[2px] text-text-muted">
+            <li className="inline-flex items-center">
+              <HashLink
+                to="/#inicio"
+                className="inline-flex items-center gap-2 transition-colors hover:text-accent-pink"
+              >
+                <ArrowLeft size={12} aria-hidden="true" />
+                Inicio
+              </HashLink>
+            </li>
+            <li
+              className="inline-flex items-center text-text-muted/40"
+              aria-hidden="true"
+            >
+              /
+            </li>
+            <li
+              className="inline-flex items-center text-accent-pink"
+              aria-current="page"
+            >
+              Recursos
+            </li>
+          </ol>
+        </nav>
 
         <h1
           id="recursos-heading"
