@@ -4,6 +4,7 @@ export interface DocumentMeta {
   title: string;
   description: string;
   keywords?: string;
+  robots?: string;
   canonical: string;
   ogTitle?: string;
   ogDescription?: string;
@@ -88,6 +89,15 @@ export function useDocumentMeta(meta: DocumentMeta, jsonLd?: JsonLd[] | JsonLd) 
         () => Object.assign(document.createElement("meta"), { name: "keywords" }),
         "content",
         meta.keywords,
+      );
+    }
+
+    if (meta.robots !== undefined) {
+      apply(
+        'meta[name="robots"]',
+        () => Object.assign(document.createElement("meta"), { name: "robots" }),
+        "content",
+        meta.robots,
       );
     }
 
