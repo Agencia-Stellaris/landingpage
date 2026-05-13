@@ -23,7 +23,7 @@ export function BibliotecaSection() {
           id="biblioteca-heading"
           className="font-heading text-section font-extrabold tracking-[-1px]"
         >
-          Aprende, aplica, <HighlightText>crece.</HighlightText>
+          Aprende, aplica y <HighlightText>crece.</HighlightText>
         </h2>
         <p className="text-sm leading-relaxed text-text-muted md:text-[0.95rem]">
           Una biblioteca de guías, plantillas, casos y herramientas que el
