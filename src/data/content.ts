@@ -83,10 +83,10 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const STATS: Stat[] = [
-  { value: "+80", label: "Clientes activos" },
-  { value: "+250", label: "Proyectos entregados" },
-  { value: "98%", label: "Satisfacci\u00f3n" },
-  { value: "4 a\u00f1os", label: "De experiencia" },
+  { value: "100%", label: "Estrategias personalizadas" },
+  { value: "+5", label: "Especialistas certificados" },
+  { value: "360\u00b0", label: "Visi\u00f3n integral de tu marca" },
+  { value: "1er", label: "Diagn\u00f3stico completamente gratis" },
 ];
 
 export const SERVICES: Service[] = [
