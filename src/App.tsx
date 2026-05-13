@@ -12,6 +12,7 @@ const RedesSocialesPage = lazy(() => import("./pages/RedesSocialesPage"));
 const DesarrolloWebPage = lazy(() => import("./pages/DesarrolloWebPage"));
 const EmailMarketingPage = lazy(() => import("./pages/EmailMarketingPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
+const RecursosPage = lazy(() => import("./pages/RecursosPage"));
 
 const CONSENT_KEY = "cookieConsent";
 type Consent = "accepted" | "rejected";
@@ -119,6 +120,7 @@ export default function App() {
                 path="/politica-de-privacidad"
                 element={<PrivacyPolicyPage />}
               />
+              <Route path="/recursos" element={<RecursosPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>

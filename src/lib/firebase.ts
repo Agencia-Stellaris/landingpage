@@ -63,3 +63,37 @@ export async function addContactRequest(
     createdAt: serverTimestamp(),
   });
 }
+
+const CONSENT_KEY = "cookieConsent";
+
+function hasAnalyticsConsent(): boolean {
+  try {
+    return localStorage.getItem(CONSENT_KEY) === "accepted";
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Fire-and-forget custom analytics event for a resource download click.
+ * Silent no-op if cookie consent was not granted, if Analytics fails to
+ * initialize, or if running in an environment where Analytics is unsupported.
+ */
+export async function logResourceDownload(
+  resourceId: string,
+  resourceType: string,
+): Promise<void> {
+  if (!hasAnalyticsConsent()) return;
+  try {
+    const analytics = await loadAnalytics();
+    if (!analytics) return;
+    const { logEvent } = await import("firebase/analytics");
+    logEvent(analytics, "resource_download", {
+      resource_id: resourceId,
+      resource_type: resourceType,
+    });
+  } catch {
+    // Best-effort tracking — never bubble up errors that would block the
+    // download navigation.
+  }
+}

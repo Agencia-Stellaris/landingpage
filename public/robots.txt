@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /recursos
 
 Sitemap: https://www.stellaris.com.co/sitemap.xml
