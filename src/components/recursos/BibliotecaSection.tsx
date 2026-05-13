@@ -16,14 +16,9 @@ export function BibliotecaSection() {
   return (
     <section
       id="biblioteca"
-      className="relative overflow-hidden px-[5%] pb-[110px] pt-10"
+      className="relative px-[5%] pb-[110px] pt-10"
       aria-labelledby="biblioteca-heading"
     >
-      <div
-        aria-hidden="true"
-        className="orb -right-32 bottom-10 h-72 w-72 bg-accent-pink/10"
-      />
-
       <div className="relative z-10 mx-auto max-w-6xl">
         <div
           ref={headerRef}

@@ -5,21 +5,9 @@ import { HighlightText } from "../ui/HighlightText";
 export function RecursosHero() {
   return (
     <section
-      className="relative overflow-hidden pt-32 pb-10"
+      className="relative pt-32 pb-10"
       aria-labelledby="recursos-heading"
     >
-      {/* Large purple wash on the left — sized to bleed past the hero into
-          BibliotecaSection so the page reads as one continuous block, not
-          two stacked sections. */}
-      <div
-        aria-hidden="true"
-        className="orb -left-40 top-10 h-[640px] w-[640px] bg-accent-purple/15"
-      />
-      <div
-        aria-hidden="true"
-        className="orb -right-32 -top-20 h-72 w-72 bg-accent-pink/15"
-      />
-
       <div className="relative z-10 mx-auto max-w-6xl px-[5%]">
         <nav aria-label="Migas de pan" className="mb-7">
           <ol className="inline-flex items-center gap-2 text-xs font-semibold uppercase leading-none tracking-[2px] text-text-muted">
