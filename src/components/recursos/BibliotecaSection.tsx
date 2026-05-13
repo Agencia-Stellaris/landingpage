@@ -14,39 +14,31 @@ export function BibliotecaSection() {
   if (!featured) return null;
 
   return (
-    <section
-      id="biblioteca"
-      className="relative px-[5%] pb-[110px] pt-10"
-      aria-labelledby="biblioteca-heading"
-    >
-      <div className="relative z-10 mx-auto max-w-6xl">
-        <div
-          ref={headerRef}
-          className="mb-12 grid items-end gap-8 lg:grid-cols-2"
+    <div className="mx-auto mt-16 max-w-6xl px-[5%]">
+      <div
+        ref={headerRef}
+        className="mb-12 grid items-end gap-8 lg:grid-cols-2"
+      >
+        <h2
+          id="biblioteca-heading"
+          className="font-heading text-section font-extrabold tracking-[-1px]"
         >
-          <div>
-            <h2
-              id="biblioteca-heading"
-              className="font-heading text-section font-extrabold tracking-[-1px]"
-            >
-              Aprende, aplica, <HighlightText>crece.</HighlightText>
-            </h2>
-          </div>
-          <p className="text-sm leading-relaxed text-text-muted md:text-[0.95rem]">
-            Una biblioteca de guías, plantillas, casos y herramientas que el
-            equipo de Stellaris usa todos los días. Gratis y sin formulario.
-          </p>
-        </div>
+          Aprende, aplica, <HighlightText>crece.</HighlightText>
+        </h2>
+        <p className="text-sm leading-relaxed text-text-muted md:text-[0.95rem]">
+          Una biblioteca de guías, plantillas, casos y herramientas que el
+          equipo de Stellaris usa todos los días. Gratis y sin formulario.
+        </p>
+      </div>
 
-        <div ref={gridRef} className="grid gap-5 lg:grid-cols-[1.25fr_1fr]">
-          <FeaturedResourceCard resource={featured} />
-          <div className="grid gap-5 sm:grid-cols-2">
-            {rest.map((resource, i) => (
-              <ResourceCard key={resource.id} resource={resource} index={i} />
-            ))}
-          </div>
+      <div ref={gridRef} className="grid gap-5 lg:grid-cols-[1.25fr_1fr]">
+        <FeaturedResourceCard resource={featured} />
+        <div className="grid gap-5 sm:grid-cols-2">
+          {rest.map((resource, i) => (
+            <ResourceCard key={resource.id} resource={resource} index={i} />
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
