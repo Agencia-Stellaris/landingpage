@@ -1,0 +1,11 @@
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--grad);
+  z-index: var(--z-progress);
+  box-shadow: 0 0 12px rgba(240, 65, 126, 0.7);
+  transition: width 0.1s linear;
+  will-change: width;
+}

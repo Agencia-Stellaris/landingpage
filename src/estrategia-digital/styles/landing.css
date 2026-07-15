@@ -1,0 +1,118 @@
+/* ============================================================
+   STELLARIS — Estilos base de la landing /estrategia-digital
+   TODO acotado a .edland-root: no debe filtrarse al resto del sitio
+   (el sitio principal usa Tailwind + sus propios tokens/reset).
+   ============================================================ */
+
+/* Fuentes propias de la landing (Space Grotesk ya viene del sitio principal) */
+@import '@fontsource-variable/sora';
+@import '@fontsource-variable/inter';
+@import '@fontsource/space-mono/400.css';
+@import '@fontsource/space-mono/700.css';
+
+@import './tokens.css';
+
+.edland-root {
+  /* Reemplaza al <body> de la landing standalone */
+  min-height: 100vh;
+  background: var(--void);
+  color: var(--text);
+  font-family: var(--ff-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.edland-root :is(h1, h2, h3, h4) {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.edland-root p {
+  margin: 0;
+}
+
+.edland-root a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.edland-root img {
+  max-width: 100%;
+  display: block;
+}
+
+.edland-root button {
+  font: inherit;
+}
+
+/* Utilidades compartidas (acotadas) */
+.edland-root .grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.edland-root .mono {
+  font-family: var(--ff-mono);
+}
+
+.edland-root .wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 26px;
+}
+
+.edland-root .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Capas: contenido por encima del fondo (estrellas + auras) */
+.edland-root main,
+.edland-root header,
+.edland-root footer {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+.edland-root section {
+  padding: 74px 0;
+  position: relative;
+}
+
+@media (max-width: 960px) {
+  .edland-root section {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .edland-root section {
+    padding: 48px 0;
+  }
+  .edland-root .wrap {
+    padding: 0 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edland-root *,
+  .edland-root *::before,
+  .edland-root *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
