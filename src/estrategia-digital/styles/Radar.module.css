@@ -1,0 +1,125 @@
+.radar {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+}
+.r2 {
+  inset: 14%;
+}
+.r3 {
+  inset: 30%;
+}
+.r4 {
+  inset: 46%;
+}
+
+.sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(240, 65, 126, 0) 0deg,
+    rgba(240, 65, 126, 0) 300deg,
+    rgba(240, 65, 126, 0.3) 355deg,
+    rgba(162, 75, 240, 0.45) 360deg
+  );
+  animation: spin 5.5s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.core {
+  position: absolute;
+  inset: 46%;
+  border-radius: 50%;
+  background: var(--grad);
+  box-shadow: 0 0 40px rgba(240, 65, 126, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: clamp(0.7rem, 1.6vw, 0.95rem);
+  color: #fff;
+  text-align: center;
+}
+
+.chip {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  background: rgba(14, 11, 26, 0.92);
+  border: 1px solid var(--line-strong);
+  padding: 6px 12px 6px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  animation: floaty 4s ease-in-out infinite;
+  z-index: 3;
+}
+
+.chip::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--grad);
+  box-shadow: 0 0 10px var(--pink);
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-5px);
+  }
+}
+
+@media (max-width: 960px) {
+  .radar {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 600px) {
+  .radar {
+    max-width: 300px;
+  }
+  .chip {
+    font-size: 10px;
+    padding: 5px 10px 5px 9px;
+  }
+}
+
+@media (max-width: 380px) {
+  .radar {
+    max-width: 260px;
+  }
+  .chip {
+    font-size: 9px;
+  }
+}

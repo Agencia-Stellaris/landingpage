@@ -1,0 +1,52 @@
+/* ============================================================
+   STELLARIS — Tokens de marca
+   Fuente única de colores, tipografías, sombras y medidas.
+   Acotados a .edland-root para no filtrarse al resto del sitio.
+   ============================================================ */
+.edland-root {
+  /* Superficies */
+  --void: #05050e;
+  --aubergine: #120a1c;
+  --panel: #0b0b17;
+  --panel-2: #100a1f;
+  --card: #0e0b1a;
+
+  /* Líneas */
+  --line: rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(255, 255, 255, 0.14);
+
+  /* Acentos */
+  --pink: #f0417e;
+  --magenta: #e6337b;
+  --purple: #a24bf0;
+  --violet: #7c3aed;
+  --grad: linear-gradient(120deg, #f0417e 0%, #c93bb0 45%, #a24bf0 100%);
+  --grad-soft: linear-gradient(120deg, rgba(240, 65, 126, 0.16), rgba(162, 75, 240, 0.16));
+
+  /* Texto */
+  --white: #ffffff;
+  --text: #ece9f6;
+  --muted: #a7a2c4;
+  --muted-2: #7d799a;
+
+  /* Estado */
+  --ok: #34d399;
+  --err: #fb7185;
+
+  /* Efectos y medidas */
+  --shadow: 0 30px 80px -30px rgba(162, 75, 240, 0.45);
+  --radius: 20px;
+  --maxw: 1180px;
+
+  /* Tipografías (autohospedadas vía @fontsource, importadas en main.tsx) */
+  --ff-display: 'Sora Variable', 'Sora', system-ui, sans-serif;
+  --ff-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --ff-mono: 'Space Mono', monospace;
+  --ff-logo: 'Space Grotesk Variable', 'Space Grotesk', sans-serif;
+
+  /* z-index */
+  --z-background: 0;
+  --z-content: 2;
+  --z-header: 50;
+  --z-progress: 60;
+}

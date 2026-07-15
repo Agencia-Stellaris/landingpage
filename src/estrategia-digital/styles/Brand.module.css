@@ -1,0 +1,23 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 23px;
+}
+
+.brand img {
+  width: 30px;
+  height: 30px;
+}
+
+.brand span {
+  font-family: var(--ff-logo);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

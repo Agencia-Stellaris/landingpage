@@ -22,6 +22,15 @@ const ROUTES = [
     files: ["src/pages/HomePage.tsx", "src/data/content.ts", "src/data/home.ts"],
   },
   {
+    url: "/estrategia-digital",
+    priority: "0.9",
+    changefreq: "weekly",
+    files: [
+      "src/estrategia-digital/EstrategiaDigitalLanding.tsx",
+      "src/estrategia-digital/data/content.ts",
+    ],
+  },
+  {
     url: "/servicios/whatsapp-marketing",
     priority: "0.8",
     changefreq: "monthly",
