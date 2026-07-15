@@ -1,5 +1,11 @@
 import { lazy, Suspense, useCallback, useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
 import { SmoothScroll } from "./components/layout/SmoothScroll";
@@ -13,8 +19,14 @@ const DesarrolloWebPage = lazy(() => import("./pages/DesarrolloWebPage"));
 const EmailMarketingPage = lazy(() => import("./pages/EmailMarketingPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 const RecursosPage = lazy(() => import("./pages/RecursosPage"));
+const EstrategiaDigitalLanding = lazy(
+  () => import("./estrategia-digital/EstrategiaDigitalLanding"),
+);
 
 const CONSENT_KEY = "cookieConsent";
+// La landing /estrategia-digital escucha este evento para cargar el Meta Pixel
+// tras el consentimiento (ver estrategia-digital/hooks/useMetaPixelConsent.ts).
+const CONSENT_EVENT = "stellaris:cookieconsent";
 type Consent = "accepted" | "rejected";
 
 type WindowWithIdle = Window &
@@ -48,8 +60,15 @@ function loadAnalytics() {
   void import("./lib/firebase").then(({ loadAnalytics: fn }) => fn());
 }
 
-export default function App() {
+/**
+ * Layout interno: vive dentro de <BrowserRouter> para poder usar useLocation.
+ * La ruta /estrategia-digital es una landing full-bleed con su propia
+ * cabecera/pie, así que ocultamos el Navbar/Footer globales del sitio.
+ */
+function AppShell() {
   const [showBanner, setShowBanner] = useState(false);
+  const { pathname } = useLocation();
+  const isBareLanding = pathname === "/estrategia-digital";
 
   useEffect(() => {
     const consent = readConsent();
@@ -78,6 +97,8 @@ export default function App() {
   const handleConsent = useCallback((consent: Consent) => {
     writeConsent(consent);
     setShowBanner(false);
+    // Notifica a la landing /estrategia-digital para (des)activar el Meta Pixel.
+    window.dispatchEvent(new Event(CONSENT_EVENT));
     if (consent === "accepted") {
       // User just clicked — load Analytics now, not on next idle.
       loadAnalytics();
@@ -85,51 +106,61 @@ export default function App() {
   }, []);
 
   return (
+    <SmoothScroll>
+      <ScrollToTop />
+
+      {/* Accessibility: skip to main content */}
+      <a href="#main-content" className="skip-link">
+        Ir al contenido principal
+      </a>
+
+      {!isBareLanding && <Navbar />}
+
+      <main id="main-content">
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/servicios/whatsapp-marketing"
+              element={<WhatsAppMarketingPage />}
+            />
+            <Route
+              path="/servicios/redes-sociales"
+              element={<RedesSocialesPage />}
+            />
+            <Route
+              path="/servicios/desarrollo-web"
+              element={<DesarrolloWebPage />}
+            />
+            <Route
+              path="/servicios/email-marketing"
+              element={<EmailMarketingPage />}
+            />
+            <Route
+              path="/politica-de-privacidad"
+              element={<PrivacyPolicyPage />}
+            />
+            <Route path="/recursos" element={<RecursosPage />} />
+            <Route
+              path="/estrategia-digital"
+              element={<EstrategiaDigitalLanding />}
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
+      </main>
+
+      {!isBareLanding && <Footer />}
+
+      {showBanner && <CookieBanner onChoice={handleConsent} />}
+    </SmoothScroll>
+  );
+}
+
+export default function App() {
+  return (
     <BrowserRouter>
-      <SmoothScroll>
-        <ScrollToTop />
-
-        {/* Accessibility: skip to main content */}
-        <a href="#main-content" className="skip-link">
-          Ir al contenido principal
-        </a>
-
-        <Navbar />
-
-        <main id="main-content">
-          <Suspense fallback={null}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route
-                path="/servicios/whatsapp-marketing"
-                element={<WhatsAppMarketingPage />}
-              />
-              <Route
-                path="/servicios/redes-sociales"
-                element={<RedesSocialesPage />}
-              />
-              <Route
-                path="/servicios/desarrollo-web"
-                element={<DesarrolloWebPage />}
-              />
-              <Route
-                path="/servicios/email-marketing"
-                element={<EmailMarketingPage />}
-              />
-              <Route
-                path="/politica-de-privacidad"
-                element={<PrivacyPolicyPage />}
-              />
-              <Route path="/recursos" element={<RecursosPage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </Suspense>
-        </main>
-
-        <Footer />
-
-        {showBanner && <CookieBanner onChoice={handleConsent} />}
-      </SmoothScroll>
+      <AppShell />
     </BrowserRouter>
   );
 }
