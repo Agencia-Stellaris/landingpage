@@ -8,8 +8,7 @@ import {
   StrategyIcon,
   TrackingIcon,
 } from '@/estrategia-digital/components/icons'
-import { siteConfig } from '@/estrategia-digital/config/site'
-import type { FooterColumn, PipelineStage, ProcessStep, WhyCard } from '@/estrategia-digital/types'
+import type { PipelineStage, ProcessStep, WhyCard } from '@/estrategia-digital/types'
 
 /** Etapas del sistema 360° (sección "Sistema"). */
 export const pipelineStages: PipelineStage[] = [
@@ -143,28 +142,3 @@ export const formChecklist = [
   'Propuesta de estrategia a tu medida.',
   'Sin compromisos ni letras pequeñas.',
 ] as const
-
-/** Columnas de enlaces del footer. */
-export const footerColumns: FooterColumn[] = [
-  {
-    title: 'Servicios',
-    links: [
-      { label: 'Redes Sociales', href: siteConfig.services.redes, external: true },
-      { label: 'Desarrollo Web', href: siteConfig.services.web, external: true },
-      { label: 'WhatsApp Marketing', href: siteConfig.services.whatsapp, external: true },
-      { label: 'Email Marketing', href: siteConfig.services.email, external: true },
-    ],
-  },
-  {
-    title: 'Empresa',
-    links: [
-      { label: 'Inicio', href: '#top' },
-      { label: 'Nosotros', href: '#nosotros' },
-      { label: 'Contacto', href: '#diagnostico' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [{ label: 'Política de privacidad', href: siteConfig.privacyUrl, external: true }],
-  },
-]

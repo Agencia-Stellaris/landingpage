@@ -2,7 +2,6 @@ import { useDocumentMeta, type DocumentMeta } from "@/hooks/useDocumentMeta";
 import { Auras } from "@/estrategia-digital/components/background/Auras";
 import { Starfield } from "@/estrategia-digital/components/background/Starfield";
 import { Hero } from "@/estrategia-digital/components/hero/Hero";
-import { Footer } from "@/estrategia-digital/components/layout/Footer";
 import { Header } from "@/estrategia-digital/components/layout/Header";
 import { LeadSection } from "@/estrategia-digital/components/lead/LeadSection";
 import { ScrollProgress } from "@/estrategia-digital/components/ScrollProgress";
@@ -139,8 +138,6 @@ export default function EstrategiaDigitalLanding() {
         <Process />
         <LeadSection />
       </main>
-
-      <Footer />
     </div>
   );
 }

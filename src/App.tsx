@@ -62,8 +62,8 @@ function loadAnalytics() {
 
 /**
  * Layout interno: vive dentro de <BrowserRouter> para poder usar useLocation.
- * La ruta /estrategia-digital es una landing full-bleed con su propia
- * cabecera/pie, así que ocultamos el Navbar/Footer globales del sitio.
+ * La ruta /estrategia-digital trae su propia cabecera, así que ocultamos el
+ * Navbar global; el Footer global sí se muestra (pie consistente en todo el sitio).
  */
 function AppShell() {
   const [showBanner, setShowBanner] = useState(false);
@@ -150,7 +150,9 @@ function AppShell() {
         </Suspense>
       </main>
 
-      {!isBareLanding && <Footer />}
+      {/* Footer global del sitio en todas las rutas (incluida /estrategia-digital,
+          que usa su propia cabecera pero comparte el pie para verse consistente). */}
+      <Footer />
 
       {showBanner && <CookieBanner onChoice={handleConsent} />}
     </SmoothScroll>
